@@ -28,7 +28,7 @@ table {
 </head>
 <body>
     <?php
-        require_once "include/header.php";
+        require_once "include/header-cn.php";
         //  database connection
         require_once "../connection.php";
         require_once "../datachart.php";
@@ -73,12 +73,12 @@ table {
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Thống kê điểm danh</h1>
+            <h1>統計點名</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Thống kê điểm danh</li>
+              <li class="breadcrumb-item active">統計點名</li>
             </ol>
           </div>
         </div>
@@ -93,7 +93,7 @@ table {
             <!-- AREA CHART -->
             <div class="card card-primary">
               <div class="card-header">
-                <h3 class="card-title">Đi làm trong tuần</h3>
+                <h3 class="card-title">當週上班</h3>
 
                 <div class="card-tools">
                   <button type="button" class="btn btn-tool" data-card-widget="collapse">
@@ -111,7 +111,7 @@ table {
             <!-- DONUT CHART -->
             <div class="card card-danger">
                 <div class="card-header">
-                    <h3 class="card-title">Trong năm <?php echo $year; ?></h3>
+                    <h3 class="card-title">年每月點名<?php echo $year; ?></h3>
 
                     <div class="card-tools">
                       <button type="button" class="btn btn-tool" data-card-widget="collapse">
@@ -133,7 +133,7 @@ table {
             <!-- LINE CHART -->
             <div class="card card-info">
                 <div class="card-header">
-                    <h3 class="card-title">Đi làm trong tháng <?php echo $month; ?></h3>
+                    <h3 class="card-title">月每週點名 <?php echo $month; ?></h3>
 
                     <div class="card-tools">
                       <button type="button" class="btn btn-tool" data-card-widget="collapse">
@@ -151,8 +151,7 @@ table {
             <!-- BAR CHART -->
             <div class="card card-success">
                 <div class="card-header">
-                    <h3 class="card-title">Bảng thống kê nghỉ phép</h3>
-                        <div class="card-tools">
+                    <h3 class="card-title">請假統計
                           <button type="button" class="btn btn-tool" data-card-widget="collapse">
                             <i class="fas fa-minus"></i>
                           </button>
@@ -169,9 +168,9 @@ table {
                         <thead>
                             <tr>
                                 <th>STT</th>
-                                <th>Mã nhân viên</th>
-                                <th>Tên nhân viên</th>
-                                 <th>Hình thức</th>
+                                <th>工號</th>
+                                <th>姓名</th>
+                                 <th>請假類別</th>
                             </tr>
                         </thead>
                       <tbody>
@@ -277,21 +276,21 @@ function drawChart() {
 }
 </script>
 <script type="text/javascript">
-        // Load google charts
-        google.charts.load('current', {'packages':['corechart']});
-        google.charts.setOnLoadCallback(drawChart);
+    // Load google charts
+    google.charts.load('current', {'packages':['corechart']});
+    google.charts.setOnLoadCallback(drawChart);
 
-        // Draw the chart and set the chart values
-        function drawChart() {
-        var data = google.visualization.arrayToDataTable([
-        ['Tuần', 'Đi làm', 'Nghỉ làm'],
-        ['Tuần 1',<?php echo $tiledilamtuan1; ?>,<?php echo $tilenghilamtuan1; ?>],
-        ['Tuần 2',<?php echo $tiledilamtuan2; ?>,<?php echo $tilenghilamtuan2; ?>],
-        ['Tuần 3',<?php echo $tiledilamtuan3; ?>,<?php echo $tilenghilamtuan3; ?>],
-        ['Tuần 4',<?php echo $tiledilamtuan4; ?>,<?php echo $tilenghilamtuan4; ?>],
-        ]);
+    // Draw the chart and set the chart values
+    function drawChart() {
+    var data = google.visualization.arrayToDataTable([
+    ['Tuần', 'Đi làm', 'Nghỉ làm'],
+    ['Tuần 1',<?php echo $tiledilamtuan1; ?>,<?php echo $tilenghilamtuan1; ?>],
+    ['Tuần 2',<?php echo $tiledilamtuan2; ?>,<?php echo $tilenghilamtuan2; ?>],
+    ['Tuần 3',<?php echo $tiledilamtuan3; ?>,<?php echo $tilenghilamtuan3; ?>],
+    ['Tuần 4',<?php echo $tiledilamtuan4; ?>,<?php echo $tilenghilamtuan4; ?>],
+    ]);
 
-        // Optional; add a title and set the width and height of the chart
+    // Optional; add a title and set the width and height of the chart
         var options = {backgroundColor: '#c8dbcd',height:"350",vAxis: {
             minValue: 0,
             maxValue: 100,
@@ -302,36 +301,36 @@ function drawChart() {
           startup: true
       }};
 
-        // Display the chart inside the <div> element with id="piechart"
-        var chart = new google.visualization.ColumnChart(document.getElementById('columnchart2'));
-        chart.draw(data, options);
-        }
-    </script>
-    <script type="text/javascript">
-        // Load google charts
-        google.charts.load('current', {'packages':['corechart']});
-        google.charts.setOnLoadCallback(drawChart);
+    // Display the chart inside the <div> element with id="piechart"
+    var chart = new google.visualization.ColumnChart(document.getElementById('columnchart2'));
+    chart.draw(data, options);
+    }
+  </script>
+  <script type="text/javascript">
+    // Load google charts
+    google.charts.load('current', {'packages':['corechart']});
+    google.charts.setOnLoadCallback(drawChart);
 
-        // Draw the chart and set the chart values
-        function drawChart() {
-        var data = google.visualization.arrayToDataTable([
-        ['Tháng', 'Đi làm', 'Nghỉ làm'],
-        ['1',<?php echo $tilenghilamthang1; ?>,<?php echo $tiledilamthang1; ?>],
-        ['2',<?php echo $tilenghilamthang2; ?>,<?php echo $tiledilamthang2; ?>],
-        ['3',<?php echo $tilenghilamthang3; ?>,<?php echo $tiledilamthang3; ?>],
-        ['4',<?php echo $tilenghilamthang4; ?>,<?php echo $tiledilamthang4; ?>],
-        ['5',<?php echo $tilenghilamthang5; ?>,<?php echo $tiledilamthang5; ?>],
-        ['6',<?php echo $tilenghilamthang6; ?>,<?php echo $tiledilamthang6; ?>],
-        ['7',<?php echo $tilenghilamthang7; ?>,<?php echo $tiledilamthang7; ?>],
-        ['8',<?php echo $tilenghilamthang8; ?>,<?php echo $tiledilamthang8; ?>],
-        ['9',<?php echo $tilenghilamthang9; ?>,<?php echo $tiledilamthang9; ?>],
-        ['10',<?php echo $tilenghilamthang10; ?>,<?php echo $tiledilamthang10; ?>],
-        ['11',<?php echo $tilenghilamthang11; ?>,<?php echo $tiledilamthang11; ?>],
-        ['12',<?php echo $tilenghilamthang12; ?>,<?php echo $tiledilamthang12; ?>],
-        ]);
+    // Draw the chart and set the chart values
+    function drawChart() {
+    var data = google.visualization.arrayToDataTable([
+    ['Tháng', 'Đi làm', 'Nghỉ làm'],
+    ['1',<?php echo $tilenghilamthang1; ?>,<?php echo $tiledilamthang1; ?>],
+    ['2',<?php echo $tilenghilamthang2; ?>,<?php echo $tiledilamthang2; ?>],
+    ['3',<?php echo $tilenghilamthang3; ?>,<?php echo $tiledilamthang3; ?>],
+    ['4',<?php echo $tilenghilamthang4; ?>,<?php echo $tiledilamthang4; ?>],
+    ['5',<?php echo $tilenghilamthang5; ?>,<?php echo $tiledilamthang5; ?>],
+    ['6',<?php echo $tilenghilamthang6; ?>,<?php echo $tiledilamthang6; ?>],
+    ['7',<?php echo $tilenghilamthang7; ?>,<?php echo $tiledilamthang7; ?>],
+    ['8',<?php echo $tilenghilamthang8; ?>,<?php echo $tiledilamthang8; ?>],
+    ['9',<?php echo $tilenghilamthang9; ?>,<?php echo $tiledilamthang9; ?>],
+    ['10',<?php echo $tilenghilamthang10; ?>,<?php echo $tiledilamthang10; ?>],
+    ['11',<?php echo $tilenghilamthang11; ?>,<?php echo $tiledilamthang11; ?>],
+    ['12',<?php echo $tilenghilamthang12; ?>,<?php echo $tiledilamthang12; ?>],
+    ]);
 
-        // Optional; add a title and set the width and height of the chart
-        var options = {backgroundColor: '#c8dbcd',height:"350",vAxis: {
+    // Optional; add a title and set the width and height of the chart
+    var options = {backgroundColor: '#c8dbcd',height:"350",vAxis: {
             minValue: 0,
             maxValue: 100,
             format: '#\'%\''
@@ -341,14 +340,14 @@ function drawChart() {
           startup: true
       }};
 
-        // Display the chart inside the <div> element with id="piechart"
-        var chart = new google.visualization.ColumnChart(document.getElementById('columnchart3'));
-        chart.draw(data, options);
-        }
-    </script>
+    // Display the chart inside the <div> element with id="piechart"
+    var chart = new google.visualization.ColumnChart(document.getElementById('columnchart3'));
+    chart.draw(data, options);
+    }
+  </script>
 </body>
 </html>
 <?php 
-    require_once "include/footer.php";
+    require_once "include/footer-cn.php";
 ?>
 

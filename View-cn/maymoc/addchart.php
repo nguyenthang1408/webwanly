@@ -1,6 +1,6 @@
 <?php 
     include "../Model/DBconfig.php";
-    include "datachart.php";
+    include "../Model/datachart.php";
     $db = new Database();
     $db -> connect();
     session_start();
@@ -71,11 +71,11 @@
 						<li>
 							<a data-bs-toggle="modal" data-bs-target="#exampleModal" href="#">
 								<i style="" class="fas fa-solid fa-user"></i>
-								<span style="">賬號</span>
+								<span style="">Tài Khoản</span>
 							</a>
 						</li>
 
-						<li><a href="">點名</a></li>
+						<li><a href="">Điểm Danh</a></li>
 						<li>
 							<a href="#" class="a2">
 								<form action="" method="POST">
@@ -89,7 +89,7 @@
 	       <header id="app-header" class="app-header" style="width:18vw;">
 					    <div class="app-header-logo" style="display: inline-block;">
 			   				<h1 class="logo-title" style="">
-			   					<span style="">VN Cable <br/> 自動化</span>
+							   <span style="">VN Cable <br/> Tự động hóa</span>
 							</h1>
 							<div class="username">
 								<span class="span" style=""><?php 
@@ -103,7 +103,7 @@
 						</div>
 								
 				<nav class="navigation" style="">
-					<a href="#" class="a1">
+					<a href="../Controller/index.php?action=test2" class="a1">
 						<i class="fas fa-solid fa-house-user a1i"></i>
 						<span style="">Trang Chủ</span>
 					</a>
@@ -111,7 +111,7 @@
 						<i style="" class="fas fa-solid fa-user"></i>
 						<span style="">Tài Khoản</span>
 					</a>
-					<a href="../Employee-management-system/admin/attendance.php" class="a3">
+					<a href="../Employee-management-system/admin/dashboard.php" class="a3">
 						<i style="" class="fas fa-solid fa-info a3i"></i>
 						<span style="" class="">Điểm Danh</span>
 					</a>
@@ -127,34 +127,30 @@
 								<li style=""><a href="../Controller/index.php?action=selectapsdata#divtimkiem">APS</a></li>
 							</ul>
 						</li>
-					</ul>
-					<a href="../Controller/index.php?action=test2-cn#divtimkiem" class="a5" style="margin-top: 25vh;">
-						<i class="fas fa-solid fa-language"></i>
-						<span style="" class="">中国</span>
-					</a>		      
+					</ul>		      
 				</nav>
 					
                 <footer class="footer">					
 					<div class="logof">
 						<a href="#" class="a2">
 							<form action="" method="POST">
-									<input style="" type="submit" name="dangxuat" value="登出" class="">
+									<input style="" type="submit" name="dangxuat" value="Đăng Xuất" class="">
 							</form>
 						</a>
 					</div>
 				</footer>
 			</header>
 			<div class="app-body-main-content" style="width:82vw">
-				<div style=" display: grid;grid-template-columns: repeat(3, 1fr);column-gap: 1.6rem;row-gap: 2rem;margin-top: 1rem;grid-template-columns: 48% 48% ;">
-					<div style="padding-left:10px;padding-top:10px;left:100px;background: #c7deff;border-radius: 20px;width:1700px; height: 500px;box-shadow:-7px -7px 15px rgb(255, 255, 255), 7px 7px 15px rgba(121, 130, 160, 0.747);">
+				<div style=" display: grid;grid-template-columns: repeat(3, 1fr);column-gap: 1.6rem;row-gap: 2rem;margin-top: 1rem;grid-template-columns: 47% 47% ;">
+					<div style="padding-left:10px;padding-top:10px;left:100px;background: #c7deff;border-radius: 20px;width:1500px; height: 500px;box-shadow:-7px -7px 15px rgb(255, 255, 255), 7px 7px 15px rgba(121, 130, 160, 0.747);">
 						<div id="columnchart"></div>
 					</div>
 					<div>
 					</div>
-					<div style="padding-left:20px;padding-top:10px;background: #c7deff;border-radius: 20px; height: 450px;box-shadow:-7px -7px 15px rgb(255, 255, 255), 7px 7px 15px rgba(121, 130, 160, 0.747);">
+					<div style="padding-left:10px;padding-top:10px;background: #c7deff;border-radius: 20px; height: 380px;box-shadow:-7px -7px 15px rgb(255, 255, 255), 7px 7px 15px rgba(121, 130, 160, 0.747);">
 						<div id="columnchart1"></div>
 					</div>
-					<div style="padding-left:40px;padding-top:10px;background: #c7deff;border-radius: 20px; height: 450px;box-shadow:-7px -7px 15px rgb(255, 255, 255), 7px 7px 15px rgba(121, 130, 160, 0.747);">
+					<div style="padding-left:10px;padding-top:10px;background: #c7deff;border-radius: 20px; height: 380px;box-shadow:-7px -7px 15px rgb(255, 255, 255), 7px 7px 15px rgba(121, 130, 160, 0.747);">
 						<div id="columnchart2"></div>
 					</div>
 				</div>
@@ -165,52 +161,47 @@
 <!-- mật Khẩu -->
 
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">入密碼</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <form>
-          <div class="mb-3">
-            <label for="recipient-name" class="col-form-label">密碼:</label>
-            <input type="password" class="form-control" id="idmatkhau">
-          </div>
-          <div>
-              <span id="span">
-                  
-              </span>
-          </div>
-        </form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" id="xacnhan" class="btn btn-primary">確認</button>
-      </div>
-    </div>
-  </div>
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLabel">Nhập Mật Khẩu</h5>
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			</div>
+			<div class="modal-body">
+				<form>
+					<div class="mb-3">
+						<label for="recipient-name" class="col-form-label">Mật Khẩu:</label>
+						<input type="password" class="form-control" id="idmatkhau">
+					</div>
+					<div>
+						<span id="span">						
+						</span>
+					</div>
+				</form>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+				<button type="button" id="xacnhan" class="btn btn-primary">Xác Nhận</button>
+			</div>
+		</div>
+	</div>
 </div>
 
 <script type="text/javascript">
     document.getElementById("xacnhan").addEventListener("click", myFunction);
-
-function myFunction() {
-
-     var x = document.getElementById("idmatkhau");
-     var y = document.getElementById("span");
-  x.value = x.value.toUpperCase();
-    if(x.value == '<?php echo $matkhau1[1] ?>'){
-        window.location="../Controller/index.php?action=usermanager-cn&page=1";
-    }else{
-      document.getElementById("idmatkhau").classList.add("is-invalid");
-      document.getElementById("span").innerText = '號碼号码不正确'
-      document.getElementById("span").style.color = 'red'
-    }
-    
-}
-
-
+	function myFunction() {
+		var x = document.getElementById("idmatkhau");
+		var y = document.getElementById("span");
+		x.value = x.value.toUpperCase();
+		if(x.value == '<?php echo $matkhau1[1] ?>'){
+			window.location="../Controller/index.php?action=usermanager&page=1";
+		}else{
+		document.getElementById("idmatkhau").classList.add("is-invalid");
+		document.getElementById("span").innerText = 'Mật Khẩu Không Đúng'
+		document.getElementById("span").style.color = 'red'
+		}
+		
+	}
 </script>
 
  <script src="../plugins/jquery-2.2.4.min.js"></script>
@@ -218,19 +209,17 @@ function myFunction() {
  <script src="../plugins/jquery.easypiechart.min.js"></script> 
  <script>
     'use strict';
-
-var $window = $(window);
-
-function run()
-{
-	var fName = arguments[0],
-		aArgs = Array.prototype.slice.call(arguments, 1);
-	try {
-		fName.apply(window, aArgs);
-	} catch(err) {
-		 
-	}
-};
+	var $window = $(window);
+	function run()
+	{
+		var fName = arguments[0],
+			aArgs = Array.prototype.slice.call(arguments, 1);
+		try {
+			fName.apply(window, aArgs);
+		} catch(err) {
+			
+		}
+	};
  </script>
  <script type="text/javascript">
 		// Load google charts
@@ -255,9 +244,9 @@ function run()
 										},
 						colors: ['#7B68EE','#FF7F50'],
 						backgroundColor: '#c7deff',
-						height:"440",
-						width:"750",
-						chartArea:{width:"580" , height:"280"} ,
+						height:"360",
+						width:"720",
+						chartArea:{width:"550" , height:"280"} ,
                 		animation:	{
 									duration: 500,
 									easing: 'out',
@@ -309,9 +298,9 @@ function run()
 										},
 						colors: ['#6495ED', '#DC143C'],
 						backgroundColor: '#c7deff',
-						height:"440",
-						width:"750",
-						chartArea:{width:"580" , height:"280"} ,
+						height:"360",
+						width:"720",
+						chartArea:{width:"550" , height:"280"} ,
 						vAxis: {
 								minValue: 0,
 								maxValue: 100,
@@ -378,10 +367,10 @@ function run()
 										fontSize: 25,           
 										},
 						colors: ['#6495ED', '#DC143C'],
-						chartArea:{width:"1440" , height:"350"} ,
+						chartArea:{width:"1250" , height:"350"} ,
 						backgroundColor: '#c7deff',
 						height:"480",
-						width:"1650",
+						width:"1480",
 						vAxis: {
 								minValue: 0,
 								maxValue: 100,

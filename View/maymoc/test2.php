@@ -1,6 +1,6 @@
 <?php 
 include "../Model/DBconfig.php";
-include "datachart.php";
+include "../Model/datachart.php";
 $db = new Database();
 $db -> connect();
 session_start();
