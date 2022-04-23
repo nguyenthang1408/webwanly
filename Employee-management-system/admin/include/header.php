@@ -70,7 +70,7 @@ session_start();
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4" style="background:linear-gradient(to right, #131685, #5C4BC9);">
     <!-- Brand Logo -->
-    <a href="../../Controller/index.php?action=home#home" class="brand-link" style="height:10vh; background: linear-gradient(to left,#0AA379,#34C79F);"> 
+    <a href="../../Controller/index.php?action=test2#" class="brand-link" style="height:10vh; background: linear-gradient(to left,#0AA379,#34C79F);"> 
       <img src="../admin/include/dist/img/logofit-remove.png" alt="FIT" class="brand-image img-circle elevation-3" style="opacity: 1;">
       <span class="brand-text font-weight">FIT AUTOMATIC</span>
     </a>
