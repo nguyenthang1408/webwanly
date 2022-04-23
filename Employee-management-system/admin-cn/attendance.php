@@ -258,9 +258,9 @@
 					<div class="card">
 					<div class="card-header border-transparent">
 						<h3 class="card-title">點名</h3>
-						<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Tìm theo mã nhân viên..">
+						<input type="text" id="myInput" onkeyup="myFunction()" placeholder="搜索搜索..">
 						<div class="card-tools">
-						<input type="text" id="mylist" onkeyup="filter()" placeholder="Tìm theo bộ phận..">
+						<input type="text" id="mylist" onkeyup="filter()" placeholder="搜索部门..">
 						</div>
 					</div>
 					<!-- /.card-header -->

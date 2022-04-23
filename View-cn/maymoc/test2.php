@@ -355,7 +355,7 @@ $tonggg = substr($tongg, 0, -1);
 						<i style="" class="fas fa-solid fa-user"></i>
 						<span style="">賬號</span>
 					</a>
-					<a href="../Employee-management-system/admin/attendance.php" class="a3">
+					<a href="../Employee-management-system/admin-cn/attendance.php" class="a3">
 						<i style="" class="fas fa-solid fa-info a3i"></i>
 						<span style="" class="">點名</span>
 					</a>
