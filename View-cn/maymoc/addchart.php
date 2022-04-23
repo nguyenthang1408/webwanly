@@ -61,7 +61,7 @@
 <body>
 
     
-		<div class="app" style="">
+<div class="app" style="">
      	   	<nav class="navmobile" id="navmobile">
 				<div class="spani" id="spani">
 					<i class="fas fa-solid fa-bars"></i>
@@ -71,11 +71,11 @@
 						<li>
 							<a data-bs-toggle="modal" data-bs-target="#exampleModal" href="#">
 								<i style="" class="fas fa-solid fa-user"></i>
-								<span style="">Tài Khoản</span>
+								<span style="">進度</span>
 							</a>
 						</li>
 
-						<li><a href="">Điểm Danh</a></li>
+						<li><a href="">點名</a></li>
 						<li>
 							<a href="#" class="a2">
 								<form action="" method="POST">
@@ -86,11 +86,11 @@
 					</ul>
 				</div>
          	 </nav>
-	       <header id="app-header" class="app-header" style="width:18vw;">
+	       <header id="app-header" class="app-header" style="">
 					    <div class="app-header-logo" style="display: inline-block;">
-			   				<h1 class="logo-title" style="">
-							   <span style="">VN Cable <br/> Tự động hóa</span>
-							</h1>
+			   				<h2 class="logo-title" style="">
+			   					<span style="">VN Cable <br/> 自動化</span>
+							</h2>
 							<div class="username">
 								<span class="span" style=""><?php 
 						           	if(isset($_SESSION['username'] ))	
@@ -103,38 +103,42 @@
 						</div>
 								
 				<nav class="navigation" style="">
-					<a href="../Controller/index.php?action=test2" class="a1">
+					<a href="#" class="a1">
 						<i class="fas fa-solid fa-house-user a1i"></i>
-						<span style="">Trang Chủ</span>
+						<span style="">菜單</span>
 					</a>
 					<a class="a2" data-bs-toggle="modal" data-bs-target="#exampleModal" href="#">
 						<i style="" class="fas fa-solid fa-user"></i>
-						<span style="">Tài Khoản</span>
+						<span style="">賬號</span>
 					</a>
-					<a href="../Employee-management-system/admin/dashboard.php" class="a3">
+					<a href="../Employee-management-system/admin-cn/attendance.php" class="a3">
 						<i style="" class="fas fa-solid fa-info a3i"></i>
-						<span style="" class="">Điểm Danh</span>
+						<span style="" class="">點名</span>
 					</a>
 					<ul>
 						<li>
 							<a href="#" class="a4">
 								<i class="fas fa-solid fa-spinner a4i"></i>
-								<span>Tiến Độ</span>
+								<span>進度</span>
 							</a>
 							<ul style="">
-								<li style=""><a href="../Controller/index.php?action=selectaecdata#divtimkiem">AEC</a></li>
-								<li style=""><a href="../Controller/index.php?action=selecttscdata#divtimkiem">TSC</a></li>
-								<li style=""><a href="../Controller/index.php?action=selectapsdata#divtimkiem">APS</a></li>
+								<li style=""><a href="../Controller/index.php?action=selectaecdata-cn#divtimkiem">AEC</a></li>
+								<li style=""><a href="../Controller/index.php?action=selecttscdata-cn#divtimkiem">TSC</a></li>
+								<li style=""><a href="../Controller/index.php?action=selectapsdata-cn#divtimkiem">APS</a></li>
 							</ul>
 						</li>
-					</ul>		      
+					</ul>
+					<a href="../Controller/index.php?action=test2#divtimkiem" class="a5" style="margin-top: 25vh;">
+						<i class="fas fa-solid fa-language"></i>
+						<span style="" class="">Tiếng Việt</span>
+					</a>		      
 				</nav>
 					
                 <footer class="footer">					
 					<div class="logof">
 						<a href="#" class="a2">
 							<form action="" method="POST">
-									<input style="" type="submit" name="dangxuat" value="Đăng Xuất" class="">
+									<input style="" type="submit" name="dangxuat" value="登出" class="">
 							</form>
 						</a>
 					</div>
@@ -161,30 +165,31 @@
 <!-- mật Khẩu -->
 
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-	<div class="modal-dialog">
-		<div class="modal-content">
-			<div class="modal-header">
-				<h5 class="modal-title" id="exampleModalLabel">Nhập Mật Khẩu</h5>
-				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-			</div>
-			<div class="modal-body">
-				<form>
-					<div class="mb-3">
-						<label for="recipient-name" class="col-form-label">Mật Khẩu:</label>
-						<input type="password" class="form-control" id="idmatkhau">
-					</div>
-					<div>
-						<span id="span">						
-						</span>
-					</div>
-				</form>
-			</div>
-			<div class="modal-footer">
-				<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-				<button type="button" id="xacnhan" class="btn btn-primary">Xác Nhận</button>
-			</div>
-		</div>
-	</div>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">入密碼</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="mb-3">
+            <label for="recipient-name" class="col-form-label">密碼:</label>
+            <input type="password" class="form-control" id="idmatkhau">
+          </div>
+          <div>
+              <span id="span">
+                  
+              </span>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" id="xacnhan" class="btn btn-primary">確認</button>
+      </div>
+    </div>
+  </div>
 </div>
 
 <script type="text/javascript">
@@ -229,7 +234,7 @@
 		// Draw the chart and set the chart values
 		function drawChart() {
 		var data = google.visualization.arrayToDataTable([
-		['Tuần', 'Đi làm', 'Nghỉ làm'],
+		['Tuần', '上班', '請假'],
 		['Tuần 1',<?php echo $tiledilamtuan1; ?>,<?php echo $tilenghilamtuan1; ?>],
 		['Tuần 2',<?php echo $tiledilamtuan2; ?>,<?php echo $tilenghilamtuan2; ?>],
 		['Tuần 3',<?php echo $tiledilamtuan3; ?>,<?php echo $tilenghilamtuan3; ?>],
@@ -237,7 +242,7 @@
 		]);
 
 		// Optional; add a title and set the width and height of the chart
-		var options = {	title: 'Điểm danh trong tháng',
+		var options = {	title: '本月每週點名',
 						titleTextStyle: {
 										color: "#1656f0",
 										fontSize: 25,           
@@ -275,7 +280,7 @@
 		// Draw the chart and set the chart values
 		function drawChart() {
 		var data = google.visualization.arrayToDataTable([
-		['Tháng', 'Đi làm', 'Nghỉ làm'],
+		['Tháng', '上班', '請假'],
 		['1',<?php echo $tiledilamthang1; ?>,<?php echo $tilenghilamthang1; ?>],
 		['2',<?php echo $tiledilamthang2; ?>,<?php echo $tilenghilamthang2; ?>],
 		['3',<?php echo $tiledilamthang3; ?>,<?php echo $tilenghilamthang3; ?>],
@@ -291,7 +296,7 @@
 		]);
 
 		// Optional; add a title and set the width and height of the chart
-		var options = {	title: 'Điểm danh trong năm',	
+		var options = {	title: '本年每月點名',	
 						titleTextStyle: {
 										color: "#1656f0",
 										fontSize: 25,           
@@ -326,7 +331,7 @@
 		// Draw the chart and set the chart values
 		function drawChart() {
 		var data = google.visualization.arrayToDataTable([
-		['Ngày', 'Đi làm', 'Nghỉ làm'],
+		['Ngày', '上班', '請假'],
 		['1',<?php echo $tiledilamngay1; ?>,<?php echo $tilenghilamngay1; ?>],
 		['2',<?php echo $tiledilamngay2; ?>,<?php echo $tilenghilamngay2; ?>],
 		['3',<?php echo $tiledilamngay3; ?>,<?php echo $tilenghilamngay3; ?>],
@@ -361,7 +366,7 @@
 		]);
 
 		// Optional; add a title and set the width and height of the chart
-		var options = {	title: 'Điểm danh từng ngày trong tháng',	
+		var options = {	title: '本月每天 點名',	
 						titleTextStyle: {
 										color: "#1656f0",
 										fontSize: 25,           
