@@ -79,7 +79,7 @@
 						<li>
 							<a href="#" class="a2">
 								<form action="" method="POST">
-								<input style=";" type="submit" name="dangxuat" value="Đăng Xuất" class="">
+								<input style=";" type="submit" name="dangxuat" value="登出" class="">
 								</form>
 							</a>
 						</li>
@@ -105,21 +105,21 @@
 				<nav class="navigation" style="">
 					<a href="#" class="a1">
 						<i class="fas fa-solid fa-house-user a1i"></i>
-						<span style="">Trang Chủ</span>
+						<span style="">菜單</span>
 					</a>
 					<a class="a2" data-bs-toggle="modal" data-bs-target="#exampleModal" href="#">
 						<i style="" class="fas fa-solid fa-user"></i>
-						<span style="">Tài Khoản</span>
+						<span style="">賬號</span>
 					</a>
 					<a href="../Employee-management-system/admin/attendance.php" class="a3">
 						<i style="" class="fas fa-solid fa-info a3i"></i>
-						<span style="" class="">Điểm Danh</span>
+						<span style="" class="">點名</span>
 					</a>
 					<ul>
 						<li>
 							<a href="#" class="a4">
 								<i class="fas fa-solid fa-spinner a4i"></i>
-								<span>Tiến Độ</span>
+								<span>進度</span>
 							</a>
 							<ul style="">
 								<li style=""><a href="../Controller/index.php?action=selectaecdata#divtimkiem">AEC</a></li>
@@ -128,9 +128,9 @@
 							</ul>
 						</li>
 					</ul>
-					<a href="../Controller/index.php?action=test2-cn#divtimkiem" class="a5" style="margin-top: 25vh;">
+					<a href="../Controller/index.php?action=test2#divtimkiem" class="a5" style="margin-top: 25vh;">
 						<i class="fas fa-solid fa-language"></i>
-						<span style="" class="">中国</span>
+						<span style="" class="">Tiếng Việt</span>
 					</a>		      
 				</nav>
 					
@@ -248,7 +248,7 @@ function run()
 		]);
 
 		// Optional; add a title and set the width and height of the chart
-		var options = {	title: 'Điểm danh trong tháng',
+		var options = {	title: '本月每週點名',
 						titleTextStyle: {
 										color: "#1656f0",
 										fontSize: 25,           
@@ -302,7 +302,7 @@ function run()
 		]);
 
 		// Optional; add a title and set the width and height of the chart
-		var options = {	title: 'Điểm danh trong năm',	
+		var options = {	title: '本年每月點名',	
 						titleTextStyle: {
 										color: "#1656f0",
 										fontSize: 25,           
@@ -372,7 +372,7 @@ function run()
 		]);
 
 		// Optional; add a title and set the width and height of the chart
-		var options = {	title: 'Điểm danh từng ngày trong tháng',	
+		var options = {	title: '本月每天 點名',	
 						titleTextStyle: {
 										color: "#1656f0",
 										fontSize: 25,           

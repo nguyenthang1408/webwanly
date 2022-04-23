@@ -299,6 +299,147 @@ $tonggg = substr($tongg, 0, -1);
         #pc2.hide {
         opacity: 1;
         } 
+
+        .app .tiles .tile:nth-child(1) .skill-item .chart,
+        .app .tiles .tile:nth-child(1) .skill-item .chart canvas
+        {
+        	left: 20px;
+        }
+
+.test100 img
+{
+	margin-left: 103px; 
+}
+
+
+.test100{	
+	left: 96px;
+}
+@keyframes run
+{
+	100%
+	{
+		transform: rotate(10deg);
+	}
+}
+.test20{	
+	left: 96px;
+}
+@keyframes run1
+{
+	100%
+	{
+		transform: rotate(40deg);
+	}
+}
+.test40{	
+	left: 96px;
+}
+@keyframes run2
+{
+	100%
+	{
+		transform: rotate(60deg);
+	}
+}
+
+.test80{	
+	left: 96px;
+}
+@keyframes run3
+{
+	100%
+	{
+		transform: rotate(80deg);
+	}
+}
+
+.test120{	
+	left: 96px;
+}
+@keyframes run4
+{
+	100%
+	{
+		transform: rotate(120deg);
+	}
+}
+
+.test160{	
+	left: 96px;
+}
+@keyframes run5
+{
+	100%
+	{
+		transform: rotate(160deg);
+	}
+}
+
+.test200{	
+	left: 96px;
+}
+@keyframes run6
+{
+	100%
+	{
+		transform: rotate(200deg);
+	}
+}
+
+.test240{	
+	left: 96px;
+}
+@keyframes run7
+{
+	100%
+	{
+		transform: rotate(220deg);
+	}
+}
+
+.test280{	
+	left: 96px;
+}
+@keyframes run8
+{
+	100%
+	{
+		transform: rotate(270deg);
+	}
+}
+
+.test320{	
+	left: 96px;
+}
+@keyframes run9
+{
+	100%
+	{
+		transform: rotate(310deg);
+	}
+}
+
+.test360{	
+	left: 96px;
+}
+@keyframes run10s
+{
+	100%
+	{
+		transform: rotate(360deg);
+	}
+}
+.tiles .tile .sumcount span:nth-child(1){
+	right: 65px;
+	font-size: 30px;
+}
+.tiles .tile .loading span:nth-child(1){
+	right: 65px;
+	font-size: 30px;
+}
+
+
  
 	</style>
 	<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.js"></script>
@@ -356,14 +497,14 @@ $tonggg = substr($tongg, 0, -1);
 						<span style="">賬號</span>
 					</a>
 					<a href="../Employee-management-system/admin/attendance.php" class="a3">
-						<i style="" class="fas fa-solid fa-info a3i"></i>
-						<span style="" class="">點名</span>
+						<i style="margin-left: -5px;" class="fas fa-solid fa-info a3i"></i>
+						<span style="margin-left: 10px;" class="">點名</span>
 					</a>
 					<ul>
 						<li>
-							<a href="#" class="a4">
+							<a href="#" class="a4" style="margin-left: 10px;">
 								<i class="fas fa-solid fa-spinner a4i"></i>
-								<span>進度</span>
+								<span style="margin-left: 5px;">進度</span>
 							</a>
 							<ul style="">
 								<li style=""><a href="../Controller/index.php?action=selectaecdata-cn#divtimkiem">AEC</a></li>

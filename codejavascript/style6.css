@@ -864,6 +864,7 @@ header .search-bar-container label:hover{
 }
 #navbar .spantiendo ul{
     display: none;
+    left: -35px;
 }
 #navbar .spantiendo:hover ul{
     display: block;

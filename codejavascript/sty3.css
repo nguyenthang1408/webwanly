@@ -31,8 +31,7 @@
      margin: 0;
      width: 100vw;
      position: relative;
-/*     overflow: hidden;*/
-     background: linear-gradient(#123, #101);
+     background: #c7deff;
 }
  *, *:before, *:after {
 	 box-sizing: border-box;
@@ -67,7 +66,7 @@
  .app-header {
  	width: 18vw;
  	height: 100vh;
- 	background-image: linear-gradient(to right, #131685, #5C4BC9); ;
+ 	background-image: linear-gradient(to right, #131685, #5C4BC9);
  	border-radius: 20px 20px 0px 0px;
  	box-shadow:-7px -7px 15px rgb(255, 255, 255), 7px 7px 15px rgba(121, 130, 160, 0.747);
     text-align: center;
@@ -183,7 +182,7 @@
 
 
  .footer {
-	 margin-top: 3vh;
+	 margin-top: 4vh;
  }
 
  .footer .logof span{
@@ -234,13 +233,13 @@
 	 color: var(--c-text-tertiary);
 }
  .navigation {
- 	margin-top: 40px;
- 	margin-left: 20px;
+   	 margin-top: 40px;
+ 	 margin-left: 20px;
 	 display: flex;
 	 flex-direction: column;
 	 align-items: flex-start;
 	 color: var(--c-text-tertiary);
-	 width: 190px;
+	 width: 16vw;
 	 text-align: center;
 }
 
@@ -258,7 +257,7 @@
  {
  	color: white;
  	background-image: linear-gradient( to right,#2CA382,#42B394);
- 	width: 15.5vw;
+ 	width: 16vw;
  	font-weight: bold;
  	font-weight: bold;
  	border-radius: 20px 0px 0px 20px; 
@@ -515,7 +514,7 @@
 	position: relative;
 	top: -250px;
 	float: right;
-	right: 40px;
+	right: 45px;
 	font-size: 25px;
 }
 .tiles .tile .loading{
@@ -527,7 +526,7 @@
 	margin-top: 25px;
 	position: relative;
 	color: #1656f0;
-	right: 40px;
+	right: 45px;
 	font-size: 25px;
 	top: -250px;
 	float: right;
