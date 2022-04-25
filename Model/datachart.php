@@ -314,8 +314,8 @@ switch ($thu) {
         }
         
         if( !empty($days[11])   ||  !empty($days[9])){
-            $nghilamthu4 = $days[11];
-            $dilamthu4 =  $days[9];
+            $nghilamthu4 = $days[9];
+            $dilamthu4 =  $days[11];
             $tongthu4 = $nghilamthu4 + $dilamthu4;
             $tiledilamthu4 = ($dilamthu4*100)/$tongthu4;
             $tilenghilamthu4 = 100 - $tiledilamthu4;

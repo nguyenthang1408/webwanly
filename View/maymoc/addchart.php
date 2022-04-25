@@ -252,10 +252,13 @@
 									easing: 'out',
 									},
 						vAxis: {
-								minValue: 0,
-								maxValue: 100,
-								format: '#\'%\''
-								} 
+							
+							minValue: 0,
+							maxValue:100,
+							ticks: [0, 5, 10, 15, 20, 40, 60, 80, 85, 90, 100],
+							format: '#\'%\'',
+						}				
+						
             };
 
 		// Display the chart inside the <div> element with id="piechart"
@@ -301,10 +304,16 @@
 						height:"360",
 						width:"720",
 						chartArea:{width:"550" , height:"280"} ,
+						viewWindow: {
+								min: 0,
+								max: 100
+							},
 						vAxis: {
-								minValue: 0,
-								maxValue: 100,
-								format: '#\'%\''
+							gridlines: { count: 10 } ,	
+							minValue: 0,
+							maxValue:100,
+							ticks: [0, 5, 10, 15, 20, 40, 60, 80, 85, 90, 100],
+							format: '#\'%\'',
 								},
 						animation: {
 									duration: 500,
@@ -372,9 +381,10 @@
 						height:"480",
 						width:"1480",
 						vAxis: {
-								minValue: 0,
-								maxValue: 100,
-								format: '#\'%\''
+							minValue: 0,
+							maxValue:100,
+							ticks: [0, 5, 10, 15, 20, 40, 60, 80, 85, 90, 100],
+							format: '#\'%\'',
 								},
 						animation: {
 									duration: 500,

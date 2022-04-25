@@ -1,30 +1,22 @@
-
-
 <?php 
     require_once "include/header.php";
 ?>
 
-<?php 
- 
-
-//  database connection
-require_once "../connection.php";
-
-$i = 1;
-
-?>
-
 <style>
-table, th, td {
-  border: 1px solid black;
-  padding: 15px;
-}
-table {
-  border-spacing: 10px;
-}
+    table, th, td {
+    border: 1px solid black;
+    padding: 15px;
+    }
+    table {
+    border-spacing: 10px;
+    }
 </style>
-<?php 
-$result1 = mysqli_query($conn, 'select count(id) as total from emp_leave');
+<?php
+
+require_once "../connection.php";
+$today = date("Y-m-d");
+$i = 1;
+$result1 = mysqli_query($conn, 'select count(id) as total from employee');
 $row1 = mysqli_fetch_assoc($result1);   
 $total_records = $row1['total'];
 
@@ -43,7 +35,10 @@ else if ($current_page < 1){
 $start = ($current_page - 1) * $limit;
 
 
-$sql = "SELECT * FROM emp_leave WHERE status = 'Đang chờ' LIMIT $start, $limit ";
+$sql = "SELECT B.`id`, B.`employcode`, B.`name` ,A.`date` , A.`type_leave` 
+FROM `attendance`AS A 
+INNER JOIN `employee` AS B 
+ON B.`id` = A.`member_id` WHERE A.`date`= '$today' LIMIT $start, $limit ";
 $result = mysqli_query($conn , $sql);
 
 ?>
@@ -57,12 +52,9 @@ $result = mysqli_query($conn , $sql);
         <th>STT</th>
         <th>Mã nhân viên</th>
         <th>Họ tên</th>
-        <th>Ngày bắt đầu</th>
-        <th>Ngày kết thúc</th> 
-        <th>Tổng số ngày</th>
         <th>Hình thức nghỉ</th>
-        <th>Lý do</th>
         <th>Trạng thái</th>
+        <th>Tùy chọn</th>
     </tr>
     <?php 
     
@@ -70,30 +62,23 @@ $result = mysqli_query($conn , $sql);
         while( $rows = mysqli_fetch_assoc($result) ){
             $employcode = $rows["employcode"];
             $name = $rows["name"];
-            $start_date= $rows["start_date"];
-            $last_date = $rows["last_date"];
-            $hinhthuc = $rows["hinhthuc"];
-            $reason = $rows["reason"];
-            $status = $rows["status"];   
+            $date = $rows["date"];
+            $type_leave = $rows["type_leave"];
             $id = $rows["id"]; 
             ?>
         <tr>
         <td><?php echo "$i."; ?></td>
         <td><?php echo $employcode; ?></td>
         <td><?php echo $name; ?></td>
-        <td><?php echo date("jS F", strtotime($start_date)); ?></td>
-        <td><?php echo date("jS F", strtotime($last_date)); ?></td>
-        <td><?php $date1=date_create($start_date);
-                  $date2=date_create($last_date);
-                   $diff=date_diff($date1,$date2);
-                   $diff1= $diff->format("%a");
-                    echo intval($diff1) + 1;
-            ?></td>
-            <td><?php echo $hinhthuc; ?></td>
-        <td><?php echo $reason; ?></td>
-        <td><?php  echo "<a href='accept-leave.php?id={$id}' class='btn btn-sm btn-outline-primary mr-2'>Đồng ý</a> <br /> <br /> " ;
-                    echo "<a href='cancel-leave.php?id={$id}' class='btn btn-sm btn-outline-danger'>Từ chối</a>" ;?>  
-        </td> 
+        <td><?php echo $date; ?></td>
+        <td><?php echo $type_leave; ?></td>
+        <td>  <?php 
+                        $edit_icon = "<a href='edit-attendance.php?id= {$id}' class='btn-sm btn-primary float-center ml-3 '> <span ><i class='fa fa-edit '></i></span> </a>";
+                        echo $edit_icon ;
+                    ?> 
+                </td>
+
+   
 
     <?php 
             $i++;

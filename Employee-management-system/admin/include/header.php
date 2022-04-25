@@ -153,27 +153,12 @@ session_start();
               </ul>
             </li>
             <li class="nav-item">
-              <a href="#" class="nav-link">
+              <a href="./manage-leave.php" class="nav-link">
                 <i class="nav-icon far fa-calendar-alt"></i>
                 <p>
-                  Nghỉ phép
-                  
+                  Quản lý nghỉ phép
                 </p>
               </a>
-              <ul class="nav nav-treeview">
-                <li class="nav-item">
-                  <a href="./manage-leave.php" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>Quản lý nghỉ phép</p>
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a href="./leave_status.php" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>Trạng thái nghỉ phép</p>
-                  </a>
-                </li>
-              </ul>
             </li>
             <li class="nav-item">
                   <a href="../../Controller/index.php?action=test2#" class="nav-link">

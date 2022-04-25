@@ -257,10 +257,10 @@
 									easing: 'out',
 									},
 						vAxis: {
-								minValue: 0,
-								maxValue: 100,
-								format: '#\'%\''
-								} 
+							minValue: 0,
+							ticks: [0, .3, .6, .9, 1]
+						}				
+						isStacked: 'percent', 
             };
 
 		// Display the chart inside the <div> element with id="piechart"
