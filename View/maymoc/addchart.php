@@ -229,7 +229,7 @@
 		// Draw the chart and set the chart values
 		function drawChart() {
 		var data = google.visualization.arrayToDataTable([
-		['Tuần', 'Đi làm','Đi làm', 'Nghỉ làm','Nghỉ làm'],
+		['Tuần', 'Đi làm', 'Đi làm', 'Nghỉ làm', 'Nghỉ làm'],
 		['Tuần 1',<?php echo $tiledilamtuan1; ?>,<?php echo $tiledilamtuan1; ?>,<?php echo $tilenghilamtuan1; ?>,<?php echo $tilenghilamtuan1; ?>],
 		['Tuần 2',<?php echo $tiledilamtuan2; ?>,<?php echo $tiledilamtuan2; ?>,<?php echo $tilenghilamtuan2; ?>,<?php echo $tilenghilamtuan2; ?>],
 		['Tuần 3',<?php echo $tiledilamtuan3; ?>,<?php echo $tiledilamtuan3; ?>,<?php echo $tilenghilamtuan3; ?>,<?php echo $tilenghilamtuan3; ?>],
@@ -255,12 +255,12 @@
 							
 							minValue: 0,
 							maxValue:100,
-							ticks: [0, 5, 10, 15, 20, 40, 60, 80, 85, 90, 100],
 							format: '#\'%\'',
 						},
 						
 						seriesType: "bars",
-						series:{1: {type: "line",pointSize: 10},2: {type: "line",pointSize: 10}},				
+						series:{1: {type: "line",pointSize: 1},2: {type: "line",pointSize: 1}},		
+						curveType: 'function',		
 						
             };
 
@@ -281,19 +281,19 @@
 		// Draw the chart and set the chart values
 		function drawChart() {
 		var data = google.visualization.arrayToDataTable([
-		['Tháng', 'Đi làm', 'Nghỉ làm'],
-		['1',<?php echo $tiledilamthang1; ?>,<?php echo $tilenghilamthang1; ?>],
-		['2',<?php echo $tiledilamthang2; ?>,<?php echo $tilenghilamthang2; ?>],
-		['3',<?php echo $tiledilamthang3; ?>,<?php echo $tilenghilamthang3; ?>],
-		['4',<?php echo $tiledilamthang4; ?>,<?php echo $tilenghilamthang4; ?>],
-		['5',<?php echo $tiledilamthang5; ?>,<?php echo $tilenghilamthang5; ?>],
-		['6',<?php echo $tiledilamthang6; ?>,<?php echo $tilenghilamthang6; ?>],
-		['7',<?php echo $tiledilamthang7; ?>,<?php echo $tilenghilamthang7; ?>],
-		['8',<?php echo $tiledilamthang8; ?>,<?php echo $tilenghilamthang8; ?>],
-		['9',<?php echo $tiledilamthang9; ?>,<?php echo $tilenghilamthang9; ?>],
-		['10',<?php echo $tiledilamthang10; ?>,<?php echo $tilenghilamthang10; ?>],
-		['11',<?php echo $tiledilamthang11; ?>,<?php echo $tilenghilamthang11; ?>],
-		['12',<?php echo $tiledilamthang12; ?>,<?php echo $tilenghilamthang12; ?>],
+		['Tháng', 'Đi làm', 'Nghỉ làm','Đi làm','Nghỉ làm'],
+		['1',<?php echo $tiledilamthang1; ?>,<?php echo $tilenghilamthang1; ?>,<?php echo $tiledilamthang1; ?>,<?php echo $tilenghilamthang1; ?>],
+		['2',<?php echo $tiledilamthang2; ?>,<?php echo $tilenghilamthang2; ?>,<?php echo $tiledilamthang2; ?>,<?php echo $tilenghilamthang2; ?>],
+		['3',<?php echo $tiledilamthang3; ?>,<?php echo $tilenghilamthang3; ?>,<?php echo $tiledilamthang3; ?>,<?php echo $tilenghilamthang3; ?>],
+		['4',<?php echo $tiledilamthang4; ?>,<?php echo $tilenghilamthang4; ?>,<?php echo $tiledilamthang4; ?>,<?php echo $tilenghilamthang4; ?>],
+		['5',<?php echo $tiledilamthang5; ?>,<?php echo $tilenghilamthang5; ?>,<?php echo $tiledilamthang5; ?>,<?php echo $tilenghilamthang5; ?>],
+		['6',<?php echo $tiledilamthang6; ?>,<?php echo $tilenghilamthang6; ?>,<?php echo $tiledilamthang6; ?>,<?php echo $tilenghilamthang6; ?>],
+		['7',<?php echo $tiledilamthang7; ?>,<?php echo $tilenghilamthang7; ?>,<?php echo $tiledilamthang7; ?>,<?php echo $tilenghilamthang7; ?>],
+		['8',<?php echo $tiledilamthang8; ?>,<?php echo $tilenghilamthang8; ?>,<?php echo $tiledilamthang8; ?>,<?php echo $tilenghilamthang8; ?>],
+		['9',<?php echo $tiledilamthang9; ?>,<?php echo $tilenghilamthang9; ?>,<?php echo $tiledilamthang9; ?>,<?php echo $tilenghilamthang9; ?>],
+		['10',<?php echo $tiledilamthang10; ?>,<?php echo $tilenghilamthang10; ?>,<?php echo $tiledilamthang10; ?>,<?php echo $tilenghilamthang10; ?>],
+		['11',<?php echo $tiledilamthang11; ?>,<?php echo $tilenghilamthang11; ?>,<?php echo $tiledilamthang11; ?>,<?php echo $tilenghilamthang11; ?>],
+		['12',<?php echo $tiledilamthang12; ?>,<?php echo $tilenghilamthang12; ?>,<?php echo $tiledilamthang12; ?>,<?php echo $tilenghilamthang12; ?>],
 		]);
 		var view = new google.visualization.DataView(data);
       	view.setColumns([0, 1,
@@ -318,10 +318,8 @@
 								max: 100
 							},
 						vAxis: {
-							gridlines: { count: 10 } ,	
 							minValue: 0,
 							maxValue:100,
-							ticks: [0, 5, 10, 15, 20, 40, 60, 80, 85, 90, 100],
 							format: '#\'%\'',
 								},
 						animation: {
@@ -329,6 +327,9 @@
 									easing: 'out',
 									startup: true
 									},
+						seriesType: "bars",
+						series:{1: {type: "line",pointSize: 1},2: {type: "line",pointSize: 1}},
+						curveType: 'function',			
 					};
 
 		// Display the chart inside the <div> element with id="piechart"
@@ -344,40 +345,40 @@
 		// Draw the chart and set the chart values
 		function drawChart() {
 		var data = google.visualization.arrayToDataTable([
-		['Ngày', 'Đi làm', 'Nghỉ làm'],
-		['1',<?php echo $tiledilamngay1; ?>,<?php echo $tilenghilamngay1; ?>],
-		['2',<?php echo $tiledilamngay2; ?>,<?php echo $tilenghilamngay2; ?>],
-		['3',<?php echo $tiledilamngay3; ?>,<?php echo $tilenghilamngay3; ?>],
-		['4',<?php echo $tiledilamngay4; ?>,<?php echo $tilenghilamngay4; ?>],
-		['5',<?php echo $tiledilamngay5; ?>,<?php echo $tilenghilamngay5; ?>],
-		['6',<?php echo $tiledilamngay6; ?>,<?php echo $tilenghilamngay6; ?>],
-		['7',<?php echo $tiledilamngay7; ?>,<?php echo $tilenghilamngay7; ?>],
-		['8',<?php echo $tiledilamngay8; ?>,<?php echo $tilenghilamngay8; ?>],
-		['9',<?php echo $tiledilamngay9; ?>,<?php echo $tilenghilamngay9; ?>],
-		['10',<?php echo $tiledilamngay10; ?>,<?php echo $tilenghilamngay10; ?>],
-		['11',<?php echo $tiledilamngay11; ?>,<?php echo $tilenghilamngay11; ?>],
-		['12',<?php echo $tiledilamngay12; ?>,<?php echo $tilenghilamngay12; ?>],
-        ['13',<?php echo $tiledilamngay13; ?>,<?php echo $tilenghilamngay13; ?>],
-		['14',<?php echo $tiledilamngay14; ?>,<?php echo $tilenghilamngay14; ?>],
-		['15',<?php echo $tiledilamngay15; ?>,<?php echo $tilenghilamngay15; ?>],
-		['16',<?php echo $tiledilamngay16; ?>,<?php echo $tilenghilamngay16; ?>],
-		['17',<?php echo $tiledilamngay17; ?>,<?php echo $tilenghilamngay17; ?>],
-		['18',<?php echo $tiledilamngay18; ?>,<?php echo $tilenghilamngay18; ?>],
-		['19',<?php echo $tiledilamngay19; ?>,<?php echo $tilenghilamngay19; ?>],
-		['20',<?php echo $tiledilamngay20; ?>,<?php echo $tilenghilamngay20; ?>],
-		['21',<?php echo $tiledilamngay21; ?>,<?php echo $tilenghilamngay21; ?>],
-		['22',<?php echo $tiledilamngay22; ?>,<?php echo $tilenghilamngay22; ?>],
-		['23',<?php echo $tiledilamngay23; ?>,<?php echo $tilenghilamngay23; ?>],
-		['24',<?php echo $tiledilamngay24; ?>,<?php echo $tilenghilamngay24; ?>],
-        ['25',<?php echo $tiledilamngay25; ?>,<?php echo $tilenghilamngay25; ?>],
-		['26',<?php echo $tiledilamngay26; ?>,<?php echo $tilenghilamngay26; ?>],
-		['27',<?php echo $tiledilamngay27; ?>,<?php echo $tilenghilamngay27; ?>],
-		['28',<?php echo $tiledilamngay28; ?>,<?php echo $tilenghilamngay28; ?>],
-		['29',<?php echo $tiledilamngay29; ?>,<?php echo $tilenghilamngay29; ?>],
-		['30',<?php echo $tiledilamngay30; ?>,<?php echo $tilenghilamngay30; ?>],
-		['31',<?php echo $tiledilamngay31; ?>,<?php echo $tilenghilamngay31; ?>],
+		['Ngày', 'Đi làm', 'Nghỉ làm','Đi làm','Nghỉ làm'],
+		['1',<?php echo $tiledilamngay1; ?>,<?php echo $tilenghilamngay1 ?>,<?php echo $tiledilamngay1; ?>,<?php echo $tilenghilamngay1; ?>],
+		['2',<?php echo $tiledilamngay2; ?>,<?php echo $tilenghilamngay2 ?>,<?php echo $tiledilamngay2; ?>,<?php echo $tilenghilamngay2; ?>],
+		['3',<?php echo $tiledilamngay3; ?>,<?php echo $tilenghilamngay3 ?>,<?php echo $tiledilamngay3; ?>,<?php echo $tilenghilamngay3; ?>],
+		['4',<?php echo $tiledilamngay4; ?>,<?php echo $tilenghilamngay4 ?>,<?php echo $tiledilamngay4; ?>,<?php echo $tilenghilamngay4; ?>],
+		['5',<?php echo $tiledilamngay5; ?>,<?php echo $tilenghilamngay5 ?>,<?php echo $tiledilamngay5; ?>,<?php echo $tilenghilamngay5; ?>],
+		['6',<?php echo $tiledilamngay6; ?>,<?php echo $tilenghilamngay6 ?>,<?php echo $tiledilamngay6; ?>,<?php echo $tilenghilamngay6; ?>],
+		['7',<?php echo $tiledilamngay7; ?>,<?php echo $tilenghilamngay7 ?>,<?php echo $tiledilamngay7; ?>,<?php echo $tilenghilamngay7; ?>],
+		['8',<?php echo $tiledilamngay8; ?>,<?php echo $tilenghilamngay8 ?>,<?php echo $tiledilamngay8; ?>,<?php echo $tilenghilamngay8; ?>],
+		['9',<?php echo $tiledilamngay9; ?>,<?php echo $tilenghilamngay9 ?>,<?php echo $tiledilamngay9; ?>,<?php echo $tilenghilamngay9; ?>],
+		['10',<?php echo $tiledilamngay10; ?>,<?php echo $tilenghilamngay10 ?>,<?php echo $tiledilamngay10; ?>,<?php echo $tilenghilamngay10; ?>],
+		['11',<?php echo $tiledilamngay11; ?>,<?php echo $tilenghilamngay11 ?>,<?php echo $tiledilamngay11; ?>,<?php echo $tilenghilamngay11; ?>],
+		['12',<?php echo $tiledilamngay12; ?>,<?php echo $tilenghilamngay12 ?>,<?php echo $tiledilamngay12; ?>,<?php echo $tilenghilamngay12; ?>],
+        ['13',<?php echo $tiledilamngay13; ?>,<?php echo $tilenghilamngay13 ?>,<?php echo $tiledilamngay13; ?>,<?php echo $tilenghilamngay13; ?>],
+		['14',<?php echo $tiledilamngay14; ?>,<?php echo $tilenghilamngay14 ?>,<?php echo $tiledilamngay14; ?>,<?php echo $tilenghilamngay14; ?>],
+		['15',<?php echo $tiledilamngay15; ?>,<?php echo $tilenghilamngay15 ?>,<?php echo $tiledilamngay15; ?>,<?php echo $tilenghilamngay15; ?>],
+		['16',<?php echo $tiledilamngay16; ?>,<?php echo $tilenghilamngay16 ?>,<?php echo $tiledilamngay16; ?>,<?php echo $tilenghilamngay16; ?>],
+		['17',<?php echo $tiledilamngay17; ?>,<?php echo $tilenghilamngay17 ?>,<?php echo $tiledilamngay17; ?>,<?php echo $tilenghilamngay17; ?>],
+		['18',<?php echo $tiledilamngay18; ?>,<?php echo $tilenghilamngay18 ?>,<?php echo $tiledilamngay18; ?>,<?php echo $tilenghilamngay18; ?>],
+		['19',<?php echo $tiledilamngay19; ?>,<?php echo $tilenghilamngay19 ?>,<?php echo $tiledilamngay19; ?>,<?php echo $tilenghilamngay19; ?>],
+		['20',<?php echo $tiledilamngay20; ?>,<?php echo $tilenghilamngay20 ?>,<?php echo $tiledilamngay20; ?>,<?php echo $tilenghilamngay20; ?>],
+		['21',<?php echo $tiledilamngay21; ?>,<?php echo $tilenghilamngay21 ?>,<?php echo $tiledilamngay21; ?>,<?php echo $tilenghilamngay21; ?>],
+		['22',<?php echo $tiledilamngay22; ?>,<?php echo $tilenghilamngay22 ?>,<?php echo $tiledilamngay22; ?>,<?php echo $tilenghilamngay22; ?>],
+		['23',<?php echo $tiledilamngay23; ?>,<?php echo $tilenghilamngay23 ?>,<?php echo $tiledilamngay23; ?>,<?php echo $tilenghilamngay23; ?>],
+		['24',<?php echo $tiledilamngay24; ?>,<?php echo $tilenghilamngay24 ?>,<?php echo $tiledilamngay24; ?>,<?php echo $tilenghilamngay24; ?>],
+        ['25',<?php echo $tiledilamngay25; ?>,<?php echo $tilenghilamngay25 ?>,<?php echo $tiledilamngay25; ?>,<?php echo $tilenghilamngay25; ?>],
+		['26',<?php echo $tiledilamngay26; ?>,<?php echo $tilenghilamngay26 ?>,<?php echo $tiledilamngay26; ?>,<?php echo $tilenghilamngay26; ?>],
+		['27',<?php echo $tiledilamngay27; ?>,<?php echo $tilenghilamngay27 ?>,<?php echo $tiledilamngay27; ?>,<?php echo $tilenghilamngay27; ?>],
+		['28',<?php echo $tiledilamngay28; ?>,<?php echo $tilenghilamngay28 ?>,<?php echo $tiledilamngay28; ?>,<?php echo $tilenghilamngay28; ?>],
+		['29',<?php echo $tiledilamngay29; ?>,<?php echo $tilenghilamngay29 ?>,<?php echo $tiledilamngay29; ?>,<?php echo $tilenghilamngay29; ?>],
+		['30',<?php echo $tiledilamngay30; ?>,<?php echo $tilenghilamngay30 ?>,<?php echo $tiledilamngay30; ?>,<?php echo $tilenghilamngay30; ?>],
+		['31',<?php echo $tiledilamngay31; ?>,<?php echo $tilenghilamngay31 ?>,<?php echo $tiledilamngay31; ?>,<?php echo $tilenghilamngay31; ?>],
 		]);
-
+		
 		// Optional; add a title and set the width and height of the chart
 		var options = {	title: 'Điểm danh từng ngày trong tháng',	
 						titleTextStyle: {
@@ -392,7 +393,6 @@
 						vAxis: {
 							minValue: 0,
 							maxValue:100,
-							ticks: [0, 5, 10, 15, 20, 40, 60, 80, 85, 90, 100],
 							format: '#\'%\'',
 								},
 						animation: {
@@ -400,6 +400,9 @@
 									easing: 'out',
 									startup: true
 									},
+						seriesType: "bars",
+						series:{1: {type: "line",pointSize: 1},2: {type: "line",pointSize: 1}},
+						curveType: 'function',			
 					};
 
 		// Display the chart inside the <div> element with id="piechart"

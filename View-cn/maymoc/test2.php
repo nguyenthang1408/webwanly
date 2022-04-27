@@ -542,7 +542,7 @@ $tonggg = substr($tongg, 0, -1);
 			</section>
     
 <div style="display: grid;grid-template-columns: repeat(2, 1fr);column-gap: 1.6rem;row-gap: 2rem;margin-top: 1rem;grid-template-columns: 41.1% 54.3% ;">
-				<div style="margin-top:20px;background: #c7deff;border-radius: 20px; height: 450px;box-shadow:-7px -7px 15px rgb(255, 255, 255), 7px 7px 15px rgba(121, 130, 160, 0.747);">
+				<div onclick="pcsh2()" style="margin-top:20px;background: #c7deff;border-radius: 20px; height: 450px;box-shadow:-7px -7px 15px rgb(255, 255, 255), 7px 7px 15px rgba(121, 130, 160, 0.747);">
 								<div class="sum" style="height:50px; text-align: center; color: #1656f0;  font-weight: bold; ">
 									<h3>
 										<span style="font-weight: bold;font-weight: 700px; font-size: 40px;">當天點名</span>
@@ -637,6 +637,11 @@ window.location="../Controller/index.php?action=usermanager-cn&page=1";
 <script type="text/javascript">
 	function pcsh1() {
 		window.location.href = './index.php?action=addchart-cn#';
+	}
+</script>
+<script type="text/javascript">
+	function pcsh2() {
+		window.location.href = '../Employee-management-system/admin-cn/manage-leave.php';
 	}
 </script>
  <script src="../plugins/jquery-2.2.4.min.js"></script>
@@ -765,7 +770,7 @@ $(document).ready(function() {
 				['請假類別', '統計'],
 				<?php 
 					while($rows = mysqli_fetch_array($result)){
-echo "['".$rows["type_leave"]."', ".$rows["type_leave_no"]."],";
+					echo "['".$rows["type_leave"]."', ".$rows["type_leave_no"]."],";
 						}
 				?>
 
@@ -821,6 +826,13 @@ echo "['".$rows["type_leave"]."', ".$rows["type_leave_no"]."],";
         ['周六',<?php echo $tiledilamthu7; ?>,<?php echo $tilenghilamthu7; ?>],
 		]);
 
+		var view = new google.visualization.DataView(data);
+      	view.setColumns([0, 1,
+                       { calc: "stringify",
+                         sourceColumn: 1,
+                         type: "string",
+                         role: "annotation" },
+                       2]);
 		// Optional; add a title and set the width and height of the chart
 		var options = {colors: ['#131685', '#34C79F'] ,backgroundColor: '#c7deff',chartArea:{height:"280",width:"740"},height:"380",width:"890",vAxis: {
             minValue: 0,
@@ -839,7 +851,7 @@ echo "['".$rows["type_leave"]."', ".$rows["type_leave_no"]."],";
 
 		// Display the chart inside the <div> element with id="piechart"
 		var chart = new google.visualization.ColumnChart(document.getElementById('columnchart'));
-		chart.draw(data, options);
+		chart.draw(view, options);
 		}
 	</script>
 

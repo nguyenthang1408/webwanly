@@ -258,7 +258,7 @@
 									},
 						vAxis: {
 							minValue: 0,
-							ticks: [0, .3, .6, .9, 1]
+							maxValue:100
 						}				
 						isStacked: 'percent', 
             };
