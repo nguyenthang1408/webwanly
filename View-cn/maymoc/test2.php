@@ -819,8 +819,6 @@ echo "['".$rows["type_leave"]."', ".$rows["type_leave_no"]."],";
         ['周四',<?php echo $tiledilamthu5; ?>,<?php echo $tilenghilamthu5; ?>],
         ['星期五',<?php echo $tiledilamthu6; ?>,<?php echo $tilenghilamthu6; ?>],
         ['周六',<?php echo $tiledilamthu7; ?>,<?php echo $tilenghilamthu7; ?>],
-		
-		
 		]);
 
 		// Optional; add a title and set the width and height of the chart
@@ -833,6 +831,10 @@ echo "['".$rows["type_leave"]."', ".$rows["type_leave_no"]."],";
           easing: 'out',
           startup: true
       	},
+		  trendlines: {
+          0: {type: 'linear', lineWidth: 5, opacity: .3},
+          1: {type: 'exponential', lineWidth: 10, opacity: .3}
+        },
 		legend: {position: 'bottom',alignment: 'center'}};
 
 		// Display the chart inside the <div> element with id="piechart"

@@ -1,370 +1,157 @@
 <?php
-include "../Model/connection.php";
-$today1 = date("Y/m/d");
-$thu = date("l", strtotime($today1));
-$month = date("m/Y");
-$year = date("Y");
-$days= array();
-$weeks= array();
-$months = array();
-$ngays = array();
-$a = 0;
-$b = 0;
-//  Dữ liệu ngày trong tuần
-$thu2 = 'Thứ 2';
-$thu3 = 'Thứ 3';
-$thu4 = 'Thứ 4';
-$thu5 = 'Thứ 5';
-$thu6 = 'Thứ 6';
-$thu7 = 'Thứ 7';
-switch ($thu) {
-    case 'Monday':
-        $sql = "SELECT SUM(attendance1=0) as nghilam,SUM(attendance1=1) as dilam FROM attendance WHERE attendance1 = '0' OR attendance1 ='1' GROUP BY date  LIMIT 1";
-        $kq = mysqli_query($conn,$sql);
-        while($kq1 =  mysqli_fetch_array($kq)){
-                foreach($kq1 as $key){
-                    $days[] = $key;         
-                }    
-            }
-           
-            if( !empty($days[1])   ||  !empty($days[3])){
-                $nghilamthu2 = $days[1];
-                $dilamthu2 =  $days[3];
-                $tongthu2 = $nghilamthu2 + $dilamthu2;
-                $tiledilamthu2 = ($dilamthu2*100)/$tongthu2;
-                $tilenghilamthu2 = 100 - $tiledilamthu2;
-                
-            }else{
-                $tiledilamthu2 =0;
-                $tilenghilamthu2 =0;
-                }
-            $tilenghilamthu3 = 0;
-            $tiledilamthu3 =  0;
-            $tilenghilamthu4 = 0;
-            $tiledilamthu4 =  0;
-            $tilenghilamthu5 = 0;
-            $tiledilamthu5 =  0;
-            $tilenghilamthu6 = 0;
-            $tiledilamthu6 =  0;
-            $tilenghilamthu7 = 0;
-            $tiledilamthu7 =  0;
-        break;
+    include "../Model/connection.php";
+    $today1 = date("Y/m/d");
+    $thu = date("l", strtotime($today1));
+    $month = date("m/Y");
+    $year = date("Y");
+    $days= array();
+    $weeks= array();
+    $months = array();
+    $ngays = array();
+    $a = 0;
+    $b = 0;
+    //  Dữ liệu ngày trong tuần
+    date_default_timezone_set('Asia/Ho_Chi_Minh');
+    $dateParam = date('Y-m-d');
+    $week = date('w', strtotime($dateParam));
+    $date = new DateTime($dateParam);
+    $firstWeek = $date->modify("-".$week." day")->format("Y-m-d");
+    $monday = strtotime ( '+1 day' , strtotime ( $firstWeek ) ) ;
+    $tuesday = strtotime ( '+2 day' , strtotime ( $firstWeek ) ) ;
+    $wednesday = strtotime ( '+3 day' , strtotime ( $firstWeek ) ) ;
+    $thursday = strtotime ( '+4 day' , strtotime ( $firstWeek ) ) ;
+    $friday = strtotime ( '+5 day' , strtotime ( $firstWeek ) ) ;
+    $saturday = strtotime ( '+6 day' , strtotime ( $firstWeek ) ) ;
+    $monday = date ( 'Y-m-d' , $monday );
+    $tuesday = date ( 'Y-m-d' , $tuesday );
+    $wednesday = date ( 'Y-m-d' , $wednesday );
+    $thursday = date ( 'Y-m-d' , $thursday );
+    $friday = date ( 'Y-m-d' , $friday );
+    $saturday = date ( 'Y-m-d' , $saturday );
 
-    case 'Tuesday':
-        $sql = "SELECT SUM(attendance1=0) as nghilam,SUM(attendance1=1) as dilam FROM attendance WHERE attendance1 = '0' OR attendance1 ='1' GROUP BY date  LIMIT 2";
-        $kq = mysqli_query($conn,$sql);
-        if (mysqli_num_rows($kq)>0) {
-               while($kq1 =  mysqli_fetch_array($kq)){
-                foreach($kq1 as $key){
-                    $days[] = $key; 
-                }  
-            }
-        }
-        if( !empty($days[1])   ||  !empty($days[3])){
-            $nghilamthu2 = $days[1];
-            $dilamthu2 =  $days[3];
-            $tongthu2 = $nghilamthu2 + $dilamthu2;
-            $tiledilamthu2 = ($dilamthu2*100)/$tongthu2;
-            $tilenghilamthu2 = 100 - $tiledilamthu2;
-            
-        }else{
-            $tiledilamthu2 =0;
-            $tilenghilamthu2 =0;
-            }
-        if( !empty($days[5])   ||  !empty($days[7])){
-            $nghilamthu3 = $days[5];
-            $dilamthu3 =  $days[7];
-            $tongthu3 = $nghilamthu3 + $dilamthu3;
-            $tiledilamthu3 = ($dilamthu3*100)/$tongthu3;
-            $tilenghilamthu3 = 100 - $tiledilamthu3;
-            
-        }else{
-            $tiledilamthu3 =0;
-            $tilenghilamthu3 =0;
-            }
+    $sql = "SELECT SUM(attendance1=0) as nghilam,SUM(attendance1=1) as dilam FROM attendance WHERE date = '$monday' ";
+    $kq1 = mysqli_query($conn,$sql);
+    while($mon =  mysqli_fetch_array($kq1)){
+
+        foreach($mon as $key){
+            $days[] = $key;         
+        }    
+    }
+
+    if( !empty($days[1])   ||  !empty($days[3])){
+        $dilamthu2 = $days[3]; 
+        $nghilamthu2 = $days[1];
+        $tongthu2 = $dilamthu2 + $nghilamthu2;
+        $tiledilamthu2 = ($dilamthu2*100)/$tongthu2;
+        $tilenghilamthu2 = 100 - $tiledilamthu2;
+       
+    }else{
+        $tiledilamthu2 = 0;
+        $tilenghilamthu2 = 0;
+    }
+
+    $sql1 = "SELECT SUM(attendance1=0) as nghilam,SUM(attendance1=1) as dilam FROM attendance WHERE date = '$tuesday' ";
+    $kq2 = mysqli_query($conn,$sql1);
+    while($tue =  mysqli_fetch_array($kq2)){
+
+        foreach($tue as $key){
+            $days[] = $key;         
+        }    
+    }
+
+    if( !empty($days[5])   ||  !empty($days[7])){
+        $dilamthu3 = $days[7]; 
+        $nghilamthu3 = $days[5];
+        $tongthu3 = $dilamthu3 + $nghilamthu3;
+        $tiledilamthu3 = ($dilamthu3*100)/$tongthu3;
+        $tilenghilamthu3 = 100 - $tiledilamthu3;
+       
+    }else{
+        $tiledilamthu3 = 0;
+        $tilenghilamthu3 = 0;
+    }
+    $sql2 = "SELECT SUM(attendance1=0) as nghilam,SUM(attendance1=1) as dilam FROM attendance WHERE date = '$wednesday' ";
+    $kq3 = mysqli_query($conn,$sql2);
+    while($wed =  mysqli_fetch_array($kq3)){
+
+        foreach($wed as $key){
+            $days[] = $key;         
+        }    
+    }
+
+    if( !empty($days[11])   ||  !empty($days[9])){
+        $dilamthu4 = $days[11]; 
+        $nghilamthu4 = $days[9];
+        $tongthu4 = $dilamthu4 + $nghilamthu4;
+        $tiledilamthu4 = ($dilamthu4*100)/$tongthu4;
+        $tilenghilamthu4 = 100 - $tiledilamthu4;
+       
+    }else{
+        $tiledilamthu4 = 0;
         $tilenghilamthu4 = 0;
-        $tiledilamthu4 =  0;
+    }
+    $sql3 = "SELECT SUM(attendance1=0) as nghilam,SUM(attendance1=1) as dilam FROM attendance WHERE date = '$thursday' ";
+    $kq4 = mysqli_query($conn,$sql3);
+    while($thu =  mysqli_fetch_array($kq4)){
+
+        foreach($thu as $key){
+            $days[] = $key;         
+        }    
+    }
+
+    if( !empty($days[13])   ||  !empty($days[15])){
+        $dilamthu5 = $days[15]; 
+        $nghilamthu5 = $days[13];
+        $tongthu5 = $dilamthu5 + $nghilamthu5;
+        $tiledilamthu5 = ($dilamthu5*100)/$tongthu5;
+        $tilenghilamthu5 = 100 - $tiledilamthu5;
+       
+    }else{
+        $tiledilamthu5 = 0;
         $tilenghilamthu5 = 0;
-        $tiledilamthu5 =  0;
+    }
+    $sql4 = "SELECT SUM(attendance1=0) as nghilam,SUM(attendance1=1) as dilam FROM attendance WHERE date = '$friday' ";
+    $kq5 = mysqli_query($conn,$sql4);
+    while($fri =  mysqli_fetch_array($kq5)){
+
+        foreach($fri as $key){
+            $days[] = $key;         
+        }    
+    }
+
+    if( !empty($days[17])   ||  !empty($days[19])){
+        $dilamthu6 = $days[19]; 
+        $nghilamthu6 = $days[17];
+        $tongthu6 = $dilamthu6 + $nghilamthu6;
+        $tiledilamthu6 = ($dilamthu6*100)/$tongthu6;
+        $tilenghilamthu6 = 100 - $tiledilamthu6;
+       
+    }else{
+        $tiledilamthu6 = 0;
         $tilenghilamthu6 = 0;
-        $tiledilamthu6 =  0;
-        $tilenghilamthu7 = 0;
-        $tiledilamthu7 =  0;
-        break;
+    }
+    $sql5 = "SELECT SUM(attendance1=0) as nghilam,SUM(attendance1=1) as dilam FROM attendance WHERE date = '$saturday' ";
+    $kq6 = mysqli_query($conn,$sql5);
+    while($sat =  mysqli_fetch_array($kq6)){
 
-    case 'Wednesday':
-        $sql = "SELECT SUM(attendance1=0) as nghilam,SUM(attendance1=1) as dilam FROM attendance WHERE attendance1 = '0' OR attendance1 ='1' GROUP BY date LIMIT 3";
-        $kq = mysqli_query($conn,$sql);
-        if(mysqli_num_rows($kq)){
-            while($kq1 =  mysqli_fetch_array($kq)){
-                foreach($kq1 as $key){
-                    $days[] = $key;         
-                }    
-            }
-        }
-        
-        if(( !empty($days[1])   ||  !empty($days[3]))){
-            $nghilamthu2 = $days[1];
-            $dilamthu2 =  $days[3];
-            $tongthu2 = $nghilamthu2 + $dilamthu2;
-            $tiledilamthu2 = ($dilamthu2*100)/$tongthu2;
-            $tilenghilamthu2 = 100 - $tiledilamthu2;
-            
-        }else{
-            $tiledilamthu2 =0;
-            $tilenghilamthu2 =0;
-        }
+        foreach($sat as $key){
+            $days[] = $key;         
+        }    
+    }
+
+    if( !empty($days[21])   ||  !empty($days[33])){
+        $dilamthu7 = $days[23]; 
+        $nghilamthu7 = $days[21];
+        $tongthu7 = $dilamthu7 + $nghilamthu7;
+        $tiledilamthu7 = ($dilamthu7*100)/$tongthu7;
+        $tilenghilamthu7 = 100 - $tiledilamthu7;
        
-        
-        if( !empty($days[5])   ||  !empty($days[7])){
-            $nghilamthu3 = $days[5];
-            $dilamthu3 =  $days[7];
-            $tongthu3 = $nghilamthu3 + $dilamthu3;
-            $tiledilamthu3 = ($dilamthu3*100)/$tongthu3;
-            $tilenghilamthu3 = 100 - $tiledilamthu3;
-            
-        }else{
-            $tiledilamthu3 =0;
-            $tilenghilamthu3 =0;
-        }
-
-        
-        if( !empty($days[11])  ||  !empty($days[9])){
-            $nghilamthu4 = $days[9];
-            $dilamthu4 =  $days[11] + $dilamthu4;
-            $tiledilamthu4 = ($dilamthu4*100)/$tongthu4;
-            $tilenghilamthu4 = 100 - $tiledilamthu4;
-            
-        }else{
-            $tiledilamthu4 =0;
-            $tilenghilamthu4 =0;
-        }
-        $tilenghilamthu5 = 0;
-        $tiledilamthu5 =  0;
-        $tilenghilamthu6 = 0;
-        $tiledilamthu6 =  0;
+    }else{
+        $tiledilamthu7 = 0;
         $tilenghilamthu7 = 0;
-        $tiledilamthu7 =  0;
-              
-        break;
-    case 'Thursday':
-        $sql = "SELECT SUM(attendance1=0) as nghilam,SUM(attendance1=1) as dilam FROM attendance WHERE attendance1 = '0' OR attendance1 ='1' GROUP BY date LIMIT 4";
-        $kq = mysqli_query($conn,$sql);
-        while($kq1 =  mysqli_fetch_array($kq)){
+    }
 
-            foreach($kq1 as $key){
-                $days[] = $key;         
-            }    
-        }
- 
-        if( !empty($days[1])   ||  !empty($days[3])){
-            $nghilamthu2 = $days[1];
-            $dilamthu2 =  $days[3];
-            $tongthu2 = $nghilamthu2 + $dilamthu2;
-            $tiledilamthu2 = ($dilamthu2*100)/$tongthu2;
-            $tilenghilamthu2 = 100 - $tiledilamthu2;   
-        }else{
-            $tiledilamthu2 =0;
-            $tilenghilamthu2 =0;
-            }
-        
-        if( !empty($days[5])   ||  !empty($days[7])){
-            $nghilamthu3 = $days[5];
-            $dilamthu3 =  $days[7];
-            $tongthu3 = $nghilamthu3 + $dilamthu3;
-            $tiledilamthu3 = ($dilamthu3*100)/$tongthu3;
-            $tilenghilamthu3 = 100 - $tiledilamthu3;
-            
-        }else{
-            $tiledilamthu3 =0;
-            $tilenghilamthu3 =0;
-        }
-        
-        if( !empty($days[9])  ||  !empty($days[11])){
-            $nghilamthu4 = $days[9];
-            $dilamthu4 =  $days[11];
-            $tongthu4 = $nghilamthu4 + $dilamthu4;
-            $tiledilamthu4 = ($dilamthu4*100)/$tongthu4;
-            $tilenghilamthu4 = 100 - $tiledilamthu4;
-            
-        }else{
-            $tiledilamthu4 =0;
-            $tilenghilamthu4 =0;    
-        }
-        
-        if( !empty($days[13])   ||  !empty($days[15])){
-            $nghilamthu5 = $days[13];
-            $dilamthu5 =  $days[15];
-            $tongthu5 = $nghilamthu5 + $dilamthu5;
-            $tiledilamthu5 = ($dilamthu5*100)/$tongthu5;
-            $tilenghilamthu5 = 100 - $tiledilamthu5;
-            
-        }else{
-            $tiledilamthu5 =0;
-            $tilenghilamthu5 =0;
-        }
-        $tilenghilamthu6 = 0;
-        $tiledilamthu6 =  0;
-        $tilenghilamthu7 = 0;
-        $tiledilamthu7 =  0;
-        break;
-    case 'Friday':
-        $sql = "SELECT SUM(attendance1=0) as nghilam,SUM(attendance1=1) as dilam FROM attendance WHERE attendance1 = '0' OR attendance1 ='1'  GROUP BY date LIMIT 5";
-        $kq = mysqli_query($conn,$sql);
-        while($kq1 =  mysqli_fetch_array($kq)){
 
-            foreach($kq1 as $key){ 
-                $days[] = $key;         
-            }    
-        }
-        if( !empty($days[1])   ||  !empty($days[3])){
-            $nghilamthu2 = $days[1];
-            $dilamthu2 =  $days[3];
-            $tongthu2 = $nghilamthu2 + $dilamthu2;
-            $tiledilamthu2 = ($dilamthu2*100)/$tongthu2;
-            $tilenghilamthu2 = 100 - $tiledilamthu2;
-        }else{
-            $tiledilamthu2 =0;
-            $tilenghilamthu2 =0;
-        }
-        
-        if( !empty($days[5])   ||  !empty( $days[7])){
-            $nghilamthu3 = $days[5];
-            $dilamthu3 =  $days[7];
-            $tongthu3 = $nghilamthu3 + $dilamthu3;
-            $tiledilamthu3 = ($dilamthu3*100)/$tongthu3;
-            $tilenghilamthu3 = 100 - $tiledilamthu3;
-            
-        }else{
-            $tiledilamthu3 =0;
-            $tilenghilamthu3 =0;
-        }
-        
-        if( !empty($days[9])   ||  !empty($days[11])){
-            $nghilamthu4 = $days[9];
-            $dilamthu4 =  $days[11];
-            $tongthu4 = $nghilamthu4 + $dilamthu4;
-            $tiledilamthu4 = ($dilamthu4*100)/$tongthu4;
-            $tilenghilamthu4 = 100 - $tiledilamthu4;
-            
-        }else{
-            $tiledilamthu4 =0;
-            $tilenghilamthu4 =0;
-        }
-       
-        if( !empty($days[13])   ||  !empty($days[15])){
-            $nghilamthu5 = $days[13];
-            $dilamthu5 =  $days[15];
-            $tongthu5 = $nghilamthu5 + $dilamthu5;
-            $tiledilamthu5= ($dilamthu5*100)/$tongthu5;
-            $tilenghilamthu5 = 100 - $tiledilamthu5;
-            
-        }else{
-            $tiledilamthu5=0;
-            $tilenghilamthu5=0;
-        }
-        
-        if( !empty($days[19])   ||  !empty($days[17])){
-            $nghilamthu6 = $days[17];
-            $dilamthu6 =  $days[19];
-            $tongthu6 = $nghilamthu6 + $dilamthu6;
-            $tiledilamthu6 = ($dilamthu6*100)/$tongthu6;
-            $tilenghilamthu6 = 100 - $tiledilamthu6;
-            
-        }else{
-            $tiledilamthu6 =0;
-            $tilenghilamthu6 =0;
-        }
-        $tilenghilamthu7 = 0;
-        $tiledilamthu7 =  0;
-        break;
-    case 'Saturday':
-        $sql = "SELECT SUM(attendance1=0) as nghilam,SUM(attendance1=1) as dilam FROM attendance WHERE attendance1 = '0' OR attendance1 ='1' GROUP BY date LIMIT 6";
-        $kq = mysqli_query($conn,$sql);
-        while($kq1 =  mysqli_fetch_array($kq)){
-
-            foreach($kq1 as $key){
-                $a++;
-                $days[$a] = $key;         
-            }    
-        }
-        
-        if( !empty($days[1])   ||  !empty($days[3])){
-            $nghilamthu2 = $days[1];
-            $dilamthu2 =  $days[3];
-            $tongthu2 = $nghilamthu2 + $dilamthu2;
-            $tiledilamthu2 = ($dilamthu2*100)/$tongthu2;
-            $tilenghilamthu2 = 100 - $tiledilamthu2;
-            
-        }else{
-            $tiledilamthu2 =0;
-            $tilenghilamthu2 =0;
-        }
-        
-        if( !empty($days[5])   ||  !empty($days[7])){
-            $nghilamthu3 = $days[5];
-            $dilamthu3 =  $days[7];
-            $tongthu3 = $nghilamthu3 + $dilamthu3;
-            $tiledilamthu3 = ($dilamthu3*100)/$tongthu3;
-            $tilenghilamthu3 = 100 - $tiledilamthu3;
-            
-        }else{
-            $tiledilamthu3 =0;
-            $tilenghilamthu3 =0;
-        }
-        
-        if( !empty($days[11])   ||  !empty($days[9])){
-            $nghilamthu4 = $days[9];
-            $dilamthu4 =  $days[11];
-            $tongthu4 = $nghilamthu4 + $dilamthu4;
-            $tiledilamthu4 = ($dilamthu4*100)/$tongthu4;
-            $tilenghilamthu4 = 100 - $tiledilamthu4;
-            
-        }else{
-            $tiledilamthu4 =0;
-            $tilenghilamthu4 =0;
-        }
-        
-        if( !empty($days[13])   ||  !empty($days[15])){
-            $nghilamthu5 = $days[13];
-            $dilamthu5 =  $days[15];
-            $tongthu5 = $nghilamthu5 + $dilamthu5;
-            $tiledilamthu5 = ($dilamthu5*100)/$tongthu5;
-            $tilenghilamthu5 = 100 - $tiledilamthu5;
-            
-        }else{
-            $tiledilamthu5 =0;
-            $tilenghilamthu5 =0;
-        }
-       
-        if( !empty($days[17])   ||  !empty($days[19])){
-            $nghilamthu6 = $days[17];
-            $dilamthu6 =  $days[19];
-            $tongthu6 = $nghilamthu6 + $dilamthu6;
-            $tiledilamthu6 = ($dilamthu6*100)/$tongthu6;
-            $tilenghilamthu6 = 100 - $tiledilamthu6;
-            
-        }else{
-            $tiledilamthu6 =0;
-            $tilenghilamthu6 =0;
-        }
-        if( !empty($days[21])   ||  !empty($days[23])){
-            $nghilamthu7 = $days[21];
-            $dilamthu7 =  $days[23];
-            $tongthu7 = $nghilamthu7 + $dilamthu7;
-            $tiledilamthu7 = ($dilamthu7*100)/$tongthu7;
-            $tilenghilamthu7 = 100 - $tiledilamthu7;
-            
-        }else{
-            $tiledilamthu7 =0;
-            $tilenghilamthu7 =0;
-        }
-        break;
-        
-    default:
-       
-        break;
-}
 // Dữ liệu tuần trong tháng
 $dautuan1 = date('Y-m-d', strtotime(date('Y-m-01', strtotime("now"))));
 $cuoituan1 = date('Y-m-d', strtotime(date('Y-m-07', strtotime("now"))));
@@ -376,10 +163,10 @@ $dautuan4 = date('Y-m-d', strtotime(date('Y-m-24', strtotime("now"))));
 $cuoituan4 = date("Y-m-t");
 
         $mysql = "SELECT SUM(attendance1=0) as nghilam,SUM(attendance1=1) as dilam FROM attendance WHERE date BETWEEN '$dautuan1' AND '$cuoituan1' ";
-        $ketqua = mysqli_query($conn,$mysql);
-        while($ketqua1 =  mysqli_fetch_array($ketqua)){
+        $ketquaw1 = mysqli_query($conn,$mysql);
+        while($w1 =  mysqli_fetch_array($ketquaw1)){
 
-            foreach($ketqua1 as $key){
+            foreach($w1 as $key){
                 $weeks[] = $key;         
             }    
         }

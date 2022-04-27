@@ -229,20 +229,20 @@
 		// Draw the chart and set the chart values
 		function drawChart() {
 		var data = google.visualization.arrayToDataTable([
-		['Tuần', 'Đi làm', 'Nghỉ làm'],
-		['Tuần 1',<?php echo $tiledilamtuan1; ?>,<?php echo $tilenghilamtuan1; ?>],
-		['Tuần 2',<?php echo $tiledilamtuan2; ?>,<?php echo $tilenghilamtuan2; ?>],
-		['Tuần 3',<?php echo $tiledilamtuan3; ?>,<?php echo $tilenghilamtuan3; ?>],
-		['Tuần 4',<?php echo $tiledilamtuan4; ?>,<?php echo $tilenghilamtuan4; ?>],
+		['Tuần', 'Đi làm','Đi làm', 'Nghỉ làm','Nghỉ làm'],
+		['Tuần 1',<?php echo $tiledilamtuan1; ?>,<?php echo $tiledilamtuan1; ?>,<?php echo $tilenghilamtuan1; ?>,<?php echo $tilenghilamtuan1; ?>],
+		['Tuần 2',<?php echo $tiledilamtuan2; ?>,<?php echo $tiledilamtuan2; ?>,<?php echo $tilenghilamtuan2; ?>,<?php echo $tilenghilamtuan2; ?>],
+		['Tuần 3',<?php echo $tiledilamtuan3; ?>,<?php echo $tiledilamtuan3; ?>,<?php echo $tilenghilamtuan3; ?>,<?php echo $tilenghilamtuan3; ?>],
+		['Tuần 4',<?php echo $tiledilamtuan4; ?>,<?php echo $tiledilamtuan4; ?>,<?php echo $tilenghilamtuan4; ?>,<?php echo $tilenghilamtuan4; ?>],
 		]);
-
+		
 		// Optional; add a title and set the width and height of the chart
 		var options = {	title: 'Điểm danh trong tháng',
 						titleTextStyle: {
 										color: "#1656f0",
 										fontSize: 25,           
 										},
-						colors: ['#7B68EE','#FF7F50'],
+						colors: ['#7B68EE','#7B68EE','#FF7F50','#FF7F50'],
 						backgroundColor: '#c7deff',
 						height:"360",
 						width:"720",
@@ -257,12 +257,15 @@
 							maxValue:100,
 							ticks: [0, 5, 10, 15, 20, 40, 60, 80, 85, 90, 100],
 							format: '#\'%\'',
-						}				
+						},
+						
+						seriesType: "bars",
+						series:{1: {type: "line",pointSize: 10},2: {type: "line",pointSize: 10}},				
 						
             };
 
 		// Display the chart inside the <div> element with id="piechart"
-		var chart = new google.visualization.ColumnChart(document.getElementById('columnchart1'));
+		var chart = new google.visualization.ComboChart(document.getElementById('columnchart1'));
         chart.draw(data, options);
 		}
     
@@ -292,7 +295,13 @@
 		['11',<?php echo $tiledilamthang11; ?>,<?php echo $tilenghilamthang11; ?>],
 		['12',<?php echo $tiledilamthang12; ?>,<?php echo $tilenghilamthang12; ?>],
 		]);
-
+		var view = new google.visualization.DataView(data);
+      	view.setColumns([0, 1,
+                       { calc: "stringify",
+                         sourceColumn: 1,
+                         type: "string",
+                         role: "annotation" },
+                       ]);
 		// Optional; add a title and set the width and height of the chart
 		var options = {	title: 'Điểm danh trong năm',	
 						titleTextStyle: {

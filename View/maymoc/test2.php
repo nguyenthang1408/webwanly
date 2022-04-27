@@ -819,21 +819,23 @@ echo "['".$rows["type_leave"]."', ".$rows["type_leave_no"]."],";
         ['Thứ năm',<?php echo $tiledilamthu5; ?>,<?php echo $tilenghilamthu5; ?>],
         ['Thứ sáu',<?php echo $tiledilamthu6; ?>,<?php echo $tilenghilamthu6; ?>],
         ['Thứ bảy',<?php echo $tiledilamthu7; ?>,<?php echo $tilenghilamthu7; ?>],
-		
-		
 		]);
+		
 
-		// Optional; add a title and set the width and height of the chart
-		var options = {colors: ['#131685', '#34C79F'] ,backgroundColor: '#c7deff',chartArea:{height:"280",width:"740"},height:"380",width:"890",vAxis: {
-            minValue: 0,
-            maxValue: 100,
-            format: '#\'%\''
-        } ,  animation: {
-          duration: 500,
-          easing: 'out',
-          startup: true
-      	},
-		legend: {position: 'bottom',alignment: 'center'}};
+		var options = {	trendlines: {
+							0: {type: 'linear', lineWidth: 5, opacity: .3},
+							1: {type: 'exponential', lineWidth: 10, opacity: .3}
+							},
+							colors: ['#131685', '#34C79F'] ,backgroundColor: '#c7deff',chartArea:{height:"280",width:"740"},height:"380",width:"890",vAxis: {
+							minValue: 0,
+							maxValue: 100,
+							format: '#\'%\''
+						} ,  animation: {
+						duration: 500,
+						easing: 'out',
+						startup: true
+						},
+						legend: {position: 'bottom',alignment: 'center'}};
 
 		// Display the chart inside the <div> element with id="piechart"
 		var chart = new google.visualization.ColumnChart(document.getElementById('columnchart'));

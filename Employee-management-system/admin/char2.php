@@ -255,8 +255,6 @@ function drawChart() {
         ['Thứ năm',<?php echo $tiledilamthu5; ?>,<?php echo $tilenghilamthu5; ?>],
         ['Thứ sáu',<?php echo $tiledilamthu6; ?>,<?php echo $tilenghilamthu6; ?>],
         ['Thứ bảy',<?php echo $tiledilamthu7; ?>,<?php echo $tilenghilamthu7; ?>],
-   
-   
 ]);
 
   // Optional; add a title and set the width and height of the chart
@@ -264,7 +262,8 @@ function drawChart() {
             minValue: 0,
             maxValue: 100,
             format: '#\'%\''
-        } ,  animation: {
+        } ,  
+        animation: {
           duration: 500,
           easing: 'out',
           startup: true
