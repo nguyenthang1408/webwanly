@@ -812,13 +812,13 @@ echo "['".$rows["type_leave"]."', ".$rows["type_leave_no"]."],";
 		// Draw the chart and set the chart values
 		function drawChart() {
 		var data = google.visualization.arrayToDataTable([
-		['Ngày', 'Đi làm', 'Nghỉ làm'],
-		['Thứ hai',<?php echo $tiledilamthu2; ?>,<?php echo $tilenghilamthu2; ?>],
-		['Thứ ba',<?php echo $tiledilamthu3; ?>,<?php echo $tilenghilamthu3; ?>],
-		['Thứ tư',<?php echo $tiledilamthu4; ?>,<?php echo $tilenghilamthu4; ?>],
-        ['Thứ năm',<?php echo $tiledilamthu5; ?>,<?php echo $tilenghilamthu5; ?>],
-        ['Thứ sáu',<?php echo $tiledilamthu6; ?>,<?php echo $tilenghilamthu6; ?>],
-        ['Thứ bảy',<?php echo $tiledilamthu7; ?>,<?php echo $tilenghilamthu7; ?>],
+		['Ngày', 'Đi làm', { role: 'annotation'} ,'Nghỉ làm',{ role: 'annotation'}],
+		['Thứ hai',<?php echo $tiledilamthu2; ?>,<?php echo $dilamthu2; ?>,<?php echo $tilenghilamthu2; ?>,<?php echo $nghilamthu2; ?>],
+		['Thứ ba',<?php echo $tiledilamthu3; ?>,<?php echo $dilamthu3; ?>,<?php echo $tilenghilamthu3; ?>,<?php echo $nghilamthu3; ?>],
+		['Thứ tư',<?php echo $tiledilamthu4; ?>,<?php echo $dilamthu4; ?>,<?php echo $tilenghilamthu4; ?>,<?php echo $nghilamthu4; ?>],
+        ['Thứ năm',<?php echo $tiledilamthu5; ?>,<?php echo $dilamthu5; ?>,<?php echo $tilenghilamthu5; ?>,<?php echo $nghilamthu5; ?>],
+        ['Thứ sáu',<?php echo $tiledilamthu6; ?>,<?php echo $dilamthu6; ?>,<?php echo $tilenghilamthu6; ?>,<?php echo $nghilamthu6; ?>],
+        ['Thứ bảy',<?php echo $tiledilamthu7; ?>,<?php echo $dilamthu7; ?>,<?php echo $tilenghilamthu7; ?>,<?php echo $nghilamthu7; ?>],
 		]);
 		
 
