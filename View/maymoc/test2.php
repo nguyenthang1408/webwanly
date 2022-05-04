@@ -542,7 +542,7 @@ $tonggg = substr($tongg, 0, -1);
 			</section>
     
 <div style="display: grid;grid-template-columns: repeat(2, 1fr);column-gap: 1.6rem;row-gap: 2rem;margin-top: 1rem;grid-template-columns: 41.1% 54.3% ;">
-				<div style="margin-top:20px;background: #c7deff;border-radius: 20px; height: 450px;box-shadow:-7px -7px 15px rgb(255, 255, 255), 7px 7px 15px rgba(121, 130, 160, 0.747);">
+				<div onclick="pcsh2()" style="margin-top:20px;background: #c7deff;border-radius: 20px; height: 450px;box-shadow:-7px -7px 15px rgb(255, 255, 255), 7px 7px 15px rgba(121, 130, 160, 0.747);">
 								<div class="sum" style="height:50px; text-align: center; color: #1656f0;  font-weight: bold; ">
 									<h3>
 										<span style="font-weight: bold;font-weight: 700px; font-size: 40px;">Điểm danh trong ngày</span>
@@ -554,14 +554,14 @@ $tonggg = substr($tongg, 0, -1);
 				</div>
 				<div onclick="pcsh1()" style="margin-top:20px;background: #c7deff;border-radius: 20px; height: 450px;box-shadow:-7px -7px 15px rgb(255, 255, 255), 7px 7px 15px rgba(121, 130, 160, 0.747);">
 					
-						<div class="sum" style="text-align: center; color: #1656f0; font-weight: 600;font-weight: bold; ">
-							<h3>
-								<span style="font-weight: bold; font-size: 40px;">Điểm danh trong tuần</span>
-								<span></span>
-							</h3>
-						</div>
-						<div id="columnchart" style="padding-top:10px; padding-left:40px;"></div>
-				</div>
+					<div class="sum" style="text-align: center; color: #1656f0; font-weight: 600;font-weight: bold; ">
+						<h3>
+							<span style="font-weight: bold; font-size: 40px;">Điểm danh trong tuần</span>
+							<span></span>
+						</h3>
+					</div>
+					<div id="columnchart" style="padding-top:10px; padding-left:40px;"></div>
+			</div>
 			</div>
 		</div>
 	</div>
@@ -637,6 +637,11 @@ window.location="../Controller/index.php?action=usermanager&page=1";
 <script type="text/javascript">
 	function pcsh1() {
 		window.location.href = './index.php?action=addchart#';
+	}
+</script>
+<script type="text/javascript">
+	function pcsh2() {
+		window.location.href = './index.php?action=table-attendance#';
 	}
 </script>
  <script src="../plugins/jquery-2.2.4.min.js"></script>
@@ -827,15 +832,23 @@ echo "['".$rows["type_leave"]."', ".$rows["type_leave_no"]."],";
 							1: {type: 'exponential', lineWidth: 10, opacity: .3}
 							},
 							colors: ['#131685', '#34C79F'] ,backgroundColor: '#c7deff',chartArea:{height:"280",width:"740"},height:"380",width:"890",vAxis: {
-							minValue: 0,
-							maxValue: 100,
 							format: '#\'%\''
 						} ,  animation: {
 						duration: 500,
 						easing: 'out',
 						startup: true
 						},
-						legend: {position: 'bottom',alignment: 'center'}};
+						legend: {position: 'bottom',alignment: 'center'},
+						series: {
+									0: {targetAxisIndex: 0},
+									1: {targetAxisIndex: 1}
+								},
+						vAxes: {
+						
+							0: {title: 'Đi làm', textStyle: {color: '#131685', bold: true}},
+							1: {title: 'Nghỉ làm', textStyle: {color: '#34C79F', bold: true}}
+						},
+					}
 
 		// Display the chart inside the <div> element with id="piechart"
 		var chart = new google.visualization.ColumnChart(document.getElementById('columnchart'));

@@ -10,14 +10,16 @@
 		while($rows = mysqli_fetch_array($result))
 		{
 			$id= $rows["id"];
+			$employcode = $rows["employcode"];
+			$name = $rows['name'];
 			$type_leave = $_POST["hinhthuc".$id]; 
 			if(isset($_POST[$id]))
 			{
-				$query1 = "INSERT INTO  `attendance`( `member_id` , `date` ,  `attendance1`, `type_leave`) VALUES('$id','$today', '1','Đi làm')";
+				$query1 = "INSERT INTO  `attendance`( `member_id`,`employcode` ,`name` , `date` ,  `attendance1`, `type_leave`) VALUES('$id','$employcode','$name','$today', '1','Đi làm')";
 			}
 			else
 			{
-				$query1 = "INSERT INTO  `attendance`( `member_id`, `date` ,  `attendance1`, `type_leave`) VALUES('$id','$today', '0', '$type_leave')";
+				$query1 = "INSERT INTO  `attendance`( `member_id`,`employcode` ,`name` , `date` ,  `attendance1`, `type_leave`) VALUES('$id','$employcode','$name','$today', '0', '$type_leave')";
 			}
 			mysqli_query($conn,$query1);
 			print "<script>";

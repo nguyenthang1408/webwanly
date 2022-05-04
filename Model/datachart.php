@@ -203,7 +203,7 @@ $cuoituan4 = date("Y-m-t");
                 $weeks[] = $key;         
             }    
         }
-       
+        
         if( !empty($weeks[5])   ||  !empty($weeks[7])){
             $dilamtuan2 = $weeks[7]; 
             $nghilamtuan2 = $weeks[5];

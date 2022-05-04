@@ -115,19 +115,7 @@
 						<i style="" class="fas fa-solid fa-info a3i"></i>
 						<span style="" class="">Điểm Danh</span>
 					</a>
-					<ul>
-						<li>
-							<a href="#" class="a4">
-								<i class="fas fa-solid fa-spinner a4i"></i>
-								<span>Tiến Độ</span>
-							</a>
-							<ul style="">
-								<li style=""><a href="../Controller/index.php?action=selectaecdata#divtimkiem">AEC</a></li>
-								<li style=""><a href="../Controller/index.php?action=selecttscdata#divtimkiem">TSC</a></li>
-								<li style=""><a href="../Controller/index.php?action=selectapsdata#divtimkiem">APS</a></li>
-							</ul>
-						</li>
-					</ul>		      
+						      
 				</nav>
 					
                 <footer class="footer">					
@@ -145,10 +133,8 @@
 					<div style="padding-left:10px;padding-top:10px;left:100px;background: #c7deff;border-radius: 20px;width:1500px; height: 500px;box-shadow:-7px -7px 15px rgb(255, 255, 255), 7px 7px 15px rgba(121, 130, 160, 0.747);">
 						<div id="columnchart"></div>
 					</div>
-					<div>
-					</div>
-					<div style="padding-left:10px;padding-top:10px;background: #c7deff;border-radius: 20px; height: 380px;box-shadow:-7px -7px 15px rgb(255, 255, 255), 7px 7px 15px rgba(121, 130, 160, 0.747);">
-						<div id="columnchart1"></div>
+					<div style="background: red;border-radius: 20px;width:500px; height: 200px;box-shadow:-7px -7px 15px rgb(255, 255, 255), 7px 7px 15px rgba(121, 130, 160, 0.747);">
+						<div id=""></div>
 					</div>
 					<div style="padding-left:10px;padding-top:10px;background: #c7deff;border-radius: 20px; height: 380px;box-shadow:-7px -7px 15px rgb(255, 255, 255), 7px 7px 15px rgba(121, 130, 160, 0.747);">
 						<div id="columnchart2"></div>
@@ -251,16 +237,19 @@
 									duration: 500,
 									easing: 'out',
 									},
-						vAxis: {
-							
-							minValue: 0,
-							maxValue:100,
-							format: '#\'%\'',
-						},
+									vAxes: {
+						
+						0: {title: 'Đi làm', textStyle: {color: '#131685', bold: true}},
+						1: {title: 'Nghỉ làm', textStyle: {color: '#34C79F', bold: true}}
+					},
+					series: {
+									1: {targetAxisIndex: 1},
+									2: {targetAxisIndex: 2}
+								},
 						
 						seriesType: "bars",
 						series:{1: {type: "line",pointSize: 1},2: {type: "line",pointSize: 1}},		
-						curveType: 'function',		
+						// curveType: 'function',		
 						
             };
 
@@ -329,7 +318,7 @@
 									},
 						seriesType: "bars",
 						series:{1: {type: "line",pointSize: 1},2: {type: "line",pointSize: 1}},
-						curveType: 'function',			
+						// curveType: 'function',			
 					};
 
 		// Display the chart inside the <div> element with id="piechart"
@@ -402,7 +391,7 @@
 									},
 						seriesType: "bars",
 						series:{1: {type: "line",pointSize: 1},2: {type: "line",pointSize: 1}},
-						curveType: 'function',			
+						// curveType: 'function',			
 					};
 
 		// Display the chart inside the <div> element with id="piechart"
