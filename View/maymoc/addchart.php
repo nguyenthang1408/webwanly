@@ -61,7 +61,7 @@
 <body>
 
     
-		<div class="app" style="">
+		<div class="app" style="height: 165vh;">
      	   	<nav class="navmobile" id="navmobile">
 				<div class="spani" id="spani">
 					<i class="fas fa-solid fa-bars"></i>
@@ -86,7 +86,7 @@
 					</ul>
 				</div>
          	 </nav>
-	       <header id="app-header" class="app-header" style="width:18vw;">
+	       <header id="app-header" class="app-header" style="width:18vw;height: 165vh;">
 					    <div class="app-header-logo" style="display: inline-block;">
 			   				<h1 class="logo-title" style="">
 							   <span style="">VN Cable <br/> Tự động hóa</span>
@@ -301,24 +301,18 @@
 						backgroundColor: '#c7deff',
 						height:"480",
 						width:"1480",
-						chartArea:{width:"1250" , height:"350"} ,
-						viewWindow: {
-								min: 0,
-								max: 100
-							},
+						chartArea:{width:"1200" , height:"350"} ,
 						vAxis: {
-							minValue: 0,
-							maxValue:100,
-							format: '#\'%\'',
+							0: {title: 'Đi làm', textStyle: {color: '#131685', bold: true}},
+							1: {title: 'Nghỉ làm', textStyle: {color: '#34C79F', bold: true}}
 								},
 						animation: {
 									duration: 500,
 									easing: 'out',
 									startup: true
 									},
-						seriesType: "bars",
 						series:{1: {type: "line",pointSize: 1},2: {type: "line",pointSize: 1}},
-						// curveType: 'function',			
+						curveType: 'function',			
 					};
 
 		// Display the chart inside the <div> element with id="piechart"
@@ -380,9 +374,8 @@
 						height:"480",
 						width:"1480",
 						vAxis: {
-							minValue: 0,
-							maxValue:100,
-							format: '#\'%\'',
+							0: {title: 'Đi làm', textStyle: {color: '#131685', bold: true}},
+							1: {title: 'Nghỉ làm', textStyle: {color: '#34C79F', bold: true}}
 								},
 						animation: {
 									duration: 500,
@@ -474,9 +467,8 @@
 						height:"480",
 						width:"1480",
 						vAxis: {
-							minValue: 0,
-							maxValue:100,
-							format: '#\'%\'',
+							0: {title: 'Đi làm', textStyle: {color: '#131685', bold: true}},
+							1: {title: 'Nghỉ làm', textStyle: {color: '#34C79F', bold: true}}
 								},
 						animation: {
 									duration: 500,
