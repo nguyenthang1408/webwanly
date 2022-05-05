@@ -54,7 +54,7 @@
 	 margin-right: auto;
 }
 .app {
-	height: 100vh;
+	height: 165vh;
    	width: 100vw;
    /*border-radius: 4%;*/
    /*background-color: var(--c-gray-800);*/
@@ -65,12 +65,12 @@
    background: #C7DEFF;
 }
 .app-header {
-   width: 18vw;
-   height: 100vh;
-   background-image: linear-gradient(to right, #131685, #5C4BC9); ;
-   border-radius: 20px 20px 0px 0px;
-   box-shadow:-7px -7px 15px rgb(255, 255, 255), 7px 7px 15px rgba(121, 130, 160, 0.747);
-  text-align: center;
+	width: 18vw;
+	height: 165vh;
+	background-image: linear-gradient(to right, #131685, #5C4BC9); ;
+	border-radius: 20px 20px 0px 0px;
+	box-shadow:-7px -7px 15px rgb(255, 255, 255), 7px 7px 15px rgba(121, 130, 160, 0.747);
+	text-align: center;
 }
 /*mobile header*/
 

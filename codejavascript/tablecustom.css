@@ -1,6 +1,10 @@
 html, body{
     background-color: aquamarine !important;
 }
+h2{
+	text-align: center;
+	font-weight: bold;
+}
 .container{
     
 }

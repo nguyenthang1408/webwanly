@@ -461,32 +461,5 @@
             }
             return $data;
          }
-
-         public function getmathe(){
-            $today = date("Y-m-d");
-            $week = date('w', strtotime($today));
-            $date = new DateTime($today);
-            $firstWeek = $date->modify("-".$week." day")->format("Y-m-d");
-            $mondaystr = strtotime ( '+1 day' , strtotime ( $firstWeek ) ) ;
-            $saturdaystr = strtotime ( '+6 day' , strtotime ( $firstWeek ) ) ;
-            $monday = date ( 'Y-m-d' , $mondaystr );
-            $saturday = date ( 'Y-m-d' , $saturdaystr );
-            $sqlweek = "SELECT  member_id, employcode, name, SUM(attendance1 = 0) as nghilam
-            FROM `attendance`
-            WHERE `attendance1` = 0 AND `date` 
-            BETWEEN ' $monday' AND '$saturday' GROUP BY member_id ORDER by member_id ASC";
-            $this -> execute($sqlweek); 
-            if($this->num_row()==0)
-            {
-               $data= 0;
-            }
-            else{
-               while($datas = $this->getData()){
-                  $data[] = $datas; 
-               }
-            }
-            return $data;
-         }
       }
-
 ?>

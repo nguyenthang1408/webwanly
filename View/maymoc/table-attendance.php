@@ -20,12 +20,12 @@
         $dauthang1 =date("Y-m-d", mktime(0, 0, 0, 1,1 ,date("Y")));
         $cuoithang12 = date("Y-m-d", mktime(0, 0, 0, 12+1,0,date("Y")));
         $i = 1;
-        $result1 = mysqli_query($conn, 'select count(id) as total from employee');
+        $result1 = mysqli_query($conn, "SELECT COUNT(A.`member_id`) AS total FROM `attendance`AS A INNER JOIN `employee` AS B ON B.`id` = A.`member_id` WHERE A.`attendance1` = 0 AND A.`date` BETWEEN '$dauthang1' AND '$cuoithang12'");
         $row1 = mysqli_fetch_assoc($result1);   
         $total_records = $row1['total'];
 
         $current_page = isset($_GET['page']) ? $_GET['page'] : 1;
-        $limit = 4;
+        $limit = 5;
         $total_page = ceil($total_records / $limit);
         // Giới hạn current_page trong khoảng 1 đến total_page
         if ($current_page > $total_page){
@@ -44,24 +44,28 @@
         ON B.`id` = A.`member_id`";
         $result = mysqli_query($conn , $sql);
 
-        
+        $sqlweek = "SELECT  member_id, employcode, name, SUM(attendance1 = 0) as nghilam
+        FROM `attendance`
+        WHERE `attendance1` = 0 AND `date` 
+        BETWEEN ' $monday' AND '$saturday' GROUP BY member_id ORDER by member_id ASC LIMIT $start, $limit";
+        $executesqlweek = mysqli_query($conn , $sqlweek);
 
-        $sqlmonth = "SELECT B.`id`, B.`employcode`, B.`name`, SUM(A.`attendance1` = 0) as dilam
+        $sqlmonth = "SELECT B.`id`, B.`employcode`, B.`name`, SUM(A.`attendance1` = 0) as nghilam
         FROM `attendance`AS A 
         INNER JOIN `employee` AS B 
         ON B.`id` = A.`member_id` 
         WHERE A.`attendance1` = 0  AND A.`date` 
         BETWEEN '$dauthang' AND '$cuoithang' 
-        GROUP BY B.`name` ORDER by name ASC ";
+        GROUP BY B.`name` ORDER by name ASC LIMIT $start, $limit";
         $executesqlmonth = mysqli_query($conn , $sqlmonth);
 
-        $sqlyear = "SELECT B.`id`, B.`employcode`, B.`name`, SUM(A.`attendance1` = 0) as dilam
+        $sqlyear = "SELECT B.`id`, B.`employcode`, B.`name`, SUM(A.`attendance1` = 0) as nghilam
         FROM `attendance`AS A 
         INNER JOIN `employee` AS B 
         ON B.`id` = A.`member_id` 
         WHERE A.`attendance1` = 0 AND A.`date` 
         BETWEEN '$dauthang1' AND '$cuoithang12' 
-        GROUP BY B.`name` ORDER by name ASC ";
+        GROUP BY B.`name` ORDER by name ASC LIMIT $start, $limit";
         $executesqlyear = mysqli_query($conn , $sqlyear);
     ?>
 <!DOCTYPE html>
@@ -96,6 +100,9 @@
             <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.js"></script>
         </head>
         <body>
+        <div style="width: 100%;height: 70px;">
+        <h2><a href="../Controller/index.php?action=test2#book" style="font-size: 25px;" class="btn btn-success">Trang Chủ</a></h2>
+                <h2 align= "center";>Chi tiết nghỉ phép của nhân viên</h2>
                 <div class="container" style="margin: 50px;">
                     <div style="box-shadow:7px 7px 15px rgba(121, 130, 160, 0.747);border-radius: 30px; background-color: white; height: 750px; padding-top:10px; width:1700px;">
                         <table class="" style="margin: 20px;">               
@@ -112,46 +119,35 @@
                             <tbody>
                                 
                                 <?php 
-                                    // if( mysqli_num_rows($executesqlweek) > 0){
-                                    //     while( $rows1 = mysqli_fetch_assoc($executesqlweek) ){
-                                    //         $employcode = $rows1["employcode"];
-                                    //         $name = $rows1["name"];
-                                    //         $id = $rows1["id"]; 
-                                    //         $dilam = $rows1["dilam"];
+                                    if( mysqli_num_rows($executesqlweek) > 0){
+                                        while( $rows1 = mysqli_fetch_assoc($executesqlweek) ){
+                                            $employcode = $rows1["employcode"];
+                                            $name = $rows1["name"];
+                                            $id = $rows1["member_id"]; 
+                                            $nghilamtuan = $rows1["nghilam"];
                                 ?>
                                 <?php 
-                                    // if( mysqli_num_rows($executesqlmonth) > 0){
-                                    //     while( $rows2 = mysqli_fetch_assoc($executesqlmonth) ){
-                                    //         $employcode = $rows2["employcode"];
-                                    //         $name = $rows2["name"];
-                                    //         $id = $rows2["id"]; 
-                                    //         $dilamthang  = $rows2["dilam"];
+                                    if( mysqli_num_rows($executesqlmonth) > 0){
+                                        while( $rows2 = mysqli_fetch_assoc($executesqlmonth) ){
+                                            $employcode = $rows2["employcode"];
+                                            $name = $rows2["name"];
+                                            $id = $rows2["id"]; 
+                                            $nghilamthang  = $rows2["nghilam"];
                                     ?>
                                  <?php 
-                                    // if( mysqli_num_rows($executesqlyear) > 0){
-                                    //     while( $rows3 = mysqli_fetch_assoc($executesqlyear) ){
-                                    //         $employcode = $rows3["employcode"];
-                                    //         $name = $rows3["name"];
-                                    //         $id = $rows3["id"]; 
-                                    //         $dilamnam  = $rows3["dilam"];
+                                    if( mysqli_num_rows($executesqlyear) > 0){
+                                        while( $rows3 = mysqli_fetch_assoc($executesqlyear) ){
+                                            $employcode = $rows3["employcode"];
+                                            $name = $rows3["name"];
+                                            $id = $rows3["id"]; 
+                                            $nghilamnam  = $rows3["nghilam"];
                                 ?>
-                                
-                                <?php                             
-                                        $mathe = $db->getmathe(); 
-                                        foreach($mathe as $key){                                    
-                                            ?>
-                                <tr>
-                                    
-                                    <td><?php echo $key['employcode']; ?></td>
-                                    <td><?php echo $key['name']; ?></td>
-            
-                                    <td>
-                                        <?php   
-                                            echo $key['nghilam'];
-                                         ?>
-                                    </td>
-                                    <td><?php echo 0; ?></td>
-                                    <td><?php echo 0; ?></td>
+                                <tr>         
+                                    <td><?php echo $employcode; ?></td>
+                                    <td><?php echo $name; ?></td>
+                                    <td><?php echo $nghilamtuan;?></td>
+                                    <td><?php echo $nghilamthang; ?></td>
+                                    <td><?php echo $nghilamnam; ?></td>
                                     <td>
                                         <table style="width:100%">
                                                 <tr>
@@ -166,10 +162,12 @@
                                     </td>
       
                                 </tr>
-                                <?php } ?>
+                                <?php } } ?>
+                                <?php } } ?>
+                                <?php } } ?>
                             </tbody>         
                         </table>
-                        <!-- <div class="pagination" align="right">
+                        <div class="pagination" align="right">
                             <?php 
                             // PHẦN HIỂN THỊ PHÂN TRANG
                             // BƯỚC 7: HIỂN THỊ PHÂN TRANG
@@ -196,7 +194,7 @@
                                 echo '<a href="../Controller/index.php?action=table-attendance&page='.($current_page+1).'">Tiếp</a> | ';
                             }
                             ?>
-                        </div> -->
+                        </div>
                     </div> 
                 </div>
         </body>
